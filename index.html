@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PETVER Social Hub</title>
+    <title>Hub PETVER</title>
     <style>
         body {
             margin: 0;
@@ -291,13 +291,13 @@
                 </div>
             </div>
             <div class="post-container">
-                <h2>Featured Video</h2>
+                <h2>Wyróżniony Film</h2>
                 <div class="video-container" id="videoContainer">
-                    <iframe src="" frameborder="0" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/lPnKsJT0Gro?start=10" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
             <div class="about-container">
-                <h2>About PETVER</h2>
+                <h2>O PETVERZE</h2>
                 <p>Petver to polski YouTuber, który zdobył popularność dzięki tworzeniu treści związanych z grą mobilną Brawl Stars. Jego kanał na YouTube, dostępny pod nazwą @petver, skupia się na dostarczaniu informacji i rozrywki dla fanów tej gry.</p>
                 <p>Petver regularnie publikuje filmy dotyczące Brawl Stars, w tym aktualności, analizy postaci, strategie oraz rozgrywki. Jego materiały są cenione za przystępny sposób prezentacji.</p>
                 <p>Petver zbudował wokół swojego kanału aktywną społeczność. Przykładem jest serwer Discord o nazwie "Ulica Piotrkowska", który skupia fanów Brawl Stars i oferuje miejsce do dyskusji, wymiany doświadczeń oraz wspólnej zabawy.</p>
@@ -306,26 +306,8 @@
     </div>
 
     <script>
-        // Array of PETVER video IDs (placeholders, replace with actual PETVER video IDs)
-        const petverVideos = [
-            'dQw4w9WgXcQ', // Placeholder
-            'oHg5SJYRHA0', // Placeholder
-            'kJQP7kiw5Fk', // Placeholder
-        ];
-
-        // Function to select a random video
-        function getRandomVideo() {
-            const randomIndex = Math.floor(Math.random() * petverVideos.length);
-            return petverVideos[randomIndex];
-        }
-
         window.onload = () => {
-            // Set random video
-            const videoIframe = document.querySelector('#videoContainer iframe');
-            const videoId = getRandomVideo();
-            videoIframe.src = `https://www.youtube.com/embed/${videoId}`;
-
-            // Loading animation
+            // Animacja ładowania
             setTimeout(() => {
                 const loadingScreen = document.getElementById('loadingScreen');
                 const checkmark = document.getElementById('checkmark');
