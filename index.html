@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading Screen</title>
+    <title>PETVER Social Hub</title>
     <style>
         body {
             margin: 0;
@@ -25,35 +25,36 @@
             align-items: center;
             background: #000;
             transition: opacity 0.5s ease;
+            z-index: 1000;
         }
 
         .glass-rectangle {
-            width: 300px;
-            height: 150px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 20px;
+            width: 320px;
+            height: 160px;
+            background: linear-gradient(135deg, rgba(40, 40, 40, 0.3), rgba(20, 20, 20, 0.1));
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 24px;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(80, 80, 80, 0.3);
         }
 
         .loading-bar-container {
-            width: 180px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 2px;
+            width: 200px;
+            height: 5px;
+            background: rgba(80, 80, 80, 0.4);
+            border-radius: 2.5px;
             overflow: hidden;
         }
 
         .loading-bar {
             width: 0;
             height: 100%;
-            background: linear-gradient(90deg, #fff, #a3a3a3);
-            border-radius: 2px;
+            background: linear-gradient(90deg, #ccc, #666);
+            border-radius: 2.5px;
             animation: load 2.5s ease-in-out forwards;
         }
 
@@ -63,17 +64,18 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0);
+            z-index: 1001;
         }
 
         .checkmark {
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            background: #34c759;
+            background: linear-gradient(135deg, #666, #444);
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 0 20px rgba(52, 199, 89, 0.5);
+            box-shadow: 0 0 20px rgba(80, 80, 80, 0.5);
             position: relative;
             overflow: hidden;
         }
@@ -83,7 +85,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(200, 200, 200, 0.3) 0%, transparent 70%);
             opacity: 0;
             animation: shine 0.5s ease-out 0.2s;
         }
@@ -92,7 +94,7 @@
             content: '';
             width: 24px;
             height: 48px;
-            border: solid #fff;
+            border: solid #ccc;
             border-width: 0 8px 8px 0;
             transform: rotate(45deg) translate(-5px, -5px) scale(0);
             animation: checkmark-draw 0.3s ease-out 0.2s forwards;
@@ -102,11 +104,136 @@
             display: none;
             width: 100%;
             height: 100%;
-            justify-content: center;
-            align-items: center;
             background: #000;
-            color: #fff;
+            color: #ccc;
             text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: auto;
+        }
+
+        .profile-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .cover-photo {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #333, #111);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(80, 80, 80, 0.3);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: linear-gradient(135deg, rgba(40, 40, 40, 0.3), rgba(20, 20, 20, 0.1));
+            backdrop-filter: blur(15px);
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid rgba(80, 80, 80, 0.3);
+        }
+
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: url('https://i.imgur.com/WCpxKm0.jpeg');
+            background-size: cover;
+            border: 2px solid #666;
+        }
+
+        .profile-info h1 {
+            margin: 0;
+            font-size: 2em;
+            color: #fff;
+        }
+
+        .profile-info p {
+            margin: 5px 0;
+            color: #999;
+        }
+
+        .link-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .gradient-link {
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #ccc;
+            font-size: 1.1em;
+            font-weight: 600;
+            background: linear-gradient(45deg, #444, #666, #444);
+            background-size: 400%;
+            transition: transform 0.3s ease;
+            animation: gradient 6s ease infinite;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(80, 80, 80, 0.3);
+        }
+
+        .gradient-link:hover {
+            transform: scale(1.05);
+        }
+
+        .post-container {
+            background: linear-gradient(135deg, rgba(40, 40, 40, 0.3), rgba(20, 20, 20, 0.1));
+            backdrop-filter: blur(15px);
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid rgba(80, 80, 80, 0.3);
+            text-align: left;
+        }
+
+        .post-container h2 {
+            margin: 0 0 10px;
+            font-size: 1.5em;
+            color: #fff;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 640px;
+            aspect-ratio: 16/9;
+            margin: 10px 0;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .about-container {
+            background: linear-gradient(135deg, rgba(40, 40, 40, 0.3), rgba(20, 20, 20, 0.1));
+            backdrop-filter: blur(15px);
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid rgba(80, 80, 80, 0.3);
+            text-align: left;
+        }
+
+        .about-container h2 {
+            margin: 0 0 10px;
+            font-size: 1.5em;
+            color: #fff;
+        }
+
+        .about-container p {
+            margin: 5px 0;
+            color: #999;
         }
 
         @keyframes load {
@@ -130,6 +257,12 @@
             50% { transform: translate(-50%, -50%) scale(1.2); }
             100% { transform: translate(-50%, -50%) scale(1); }
         }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
     </style>
 </head>
 <body>
@@ -144,11 +277,55 @@
         <div class="checkmark"></div>
     </div>
     <div class="content" id="content">
-        <h1>Content will go here</h1>
+        <div class="profile-container">
+            <div class="cover-photo"></div>
+            <div class="profile-header">
+                <div class="profile-pic"></div>
+                <div class="profile-info">
+                    <h1>PETVER</h1>
+                    <p>Polski YouTuber | Brawl Stars</p>
+                    <div class="link-container">
+                        <a href="https://www.youtube.com/@petver" target="_blank" class="gradient-link">YouTube</a>
+                        <a href="https://discord.gg/u6xM6pBfUw" target="_blank" class="gradient-link">Discord: Ulica Piotrkowska</a>
+                    </div>
+                </div>
+            </div>
+            <div class="post-container">
+                <h2>Featured Video</h2>
+                <div class="video-container" id="videoContainer">
+                    <iframe src="" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="about-container">
+                <h2>About PETVER</h2>
+                <p>Petver to polski YouTuber, który zdobył popularność dzięki tworzeniu treści związanych z grą mobilną Brawl Stars. Jego kanał na YouTube, dostępny pod nazwą @petver, skupia się na dostarczaniu informacji i rozrywki dla fanów tej gry.</p>
+                <p>Petver regularnie publikuje filmy dotyczące Brawl Stars, w tym aktualności, analizy postaci, strategie oraz rozgrywki. Jego materiały są cenione za przystępny sposób prezentacji.</p>
+                <p>Petver zbudował wokół swojego kanału aktywną społeczność. Przykładem jest serwer Discord o nazwie "Ulica Piotrkowska", który skupia fanów Brawl Stars i oferuje miejsce do dyskusji, wymiany doświadczeń oraz wspólnej zabawy.</p>
+            </div>
+        </div>
     </div>
 
     <script>
+        // Array of PETVER video IDs (placeholders, replace with actual PETVER video IDs)
+        const petverVideos = [
+            'dQw4w9WgXcQ', // Placeholder
+            'oHg5SJYRHA0', // Placeholder
+            'kJQP7kiw5Fk', // Placeholder
+        ];
+
+        // Function to select a random video
+        function getRandomVideo() {
+            const randomIndex = Math.floor(Math.random() * petverVideos.length);
+            return petverVideos[randomIndex];
+        }
+
         window.onload = () => {
+            // Set random video
+            const videoIframe = document.querySelector('#videoContainer iframe');
+            const videoId = getRandomVideo();
+            videoIframe.src = `https://www.youtube.com/embed/${videoId}`;
+
+            // Loading animation
             setTimeout(() => {
                 const loadingScreen = document.getElementById('loadingScreen');
                 const checkmark = document.getElementById('checkmark');
