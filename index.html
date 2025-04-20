@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PETVER</title>
+    <title>Hub PETVER</title>
     <style>
         body {
             margin: 0;
@@ -234,8 +234,8 @@
 
         /* Subscription Counter Styles */
         .sub-counter {
-            width: 100%;
-            max-width: 400px;
+            width: 90vw; /* Adjusted for mobile */
+            max-width: 320px; /* Reduced max-width for better mobile fit */
             padding: 20px;
             background: linear-gradient(135deg, rgba(40, 40, 40, 0.3), rgba(20, 20, 20, 0.1));
             backdrop-filter: blur(15px);
@@ -245,7 +245,6 @@
             text-align: center;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            user-select: none;
             margin: 20px auto;
         }
 
@@ -272,6 +271,7 @@
             color: #fff;
             transition: color 0.3s ease;
             display: inline-block;
+            user-select: none; /* Prevent text selection */
         }
 
         .sub-count.increment {
@@ -331,6 +331,11 @@
 
             .sub-count {
                 font-size: 3em;
+            }
+
+            .sub-counter {
+                width: 80vw; /* Slightly wider on larger screens */
+                max-width: 360px; /* Adjusted for desktop */
             }
         }
 
@@ -460,6 +465,7 @@
 
             // Interakcja z kliknięciem
             subCounter.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent text selection
                 subCount++;
                 updateCounter();
 
