@@ -234,9 +234,9 @@
 
         /* Subscription Counter Styles */
         .sub-counter {
-            width: 90vw; /* Adjusted for mobile */
-            max-width: 320px; /* Reduced max-width for better mobile fit */
-            padding: 20px;
+            width: 85vw; /* Reduced for better mobile fit */
+            max-width: 300px; /* Reduced max-width */
+            padding: 15px; /* Reduced padding */
             background: linear-gradient(135deg, rgba(40, 40, 40, 0.3), rgba(20, 20, 20, 0.1));
             backdrop-filter: blur(15px);
             border-radius: 24px;
@@ -245,6 +245,7 @@
             text-align: center;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-sizing: border-box; /* Ensure padding is included in width */
             margin: 20px auto;
         }
 
@@ -271,7 +272,7 @@
             color: #fff;
             transition: color 0.3s ease;
             display: inline-block;
-            user-select: none; /* Prevent text selection */
+            user-select: none;
         }
 
         .sub-count.increment {
@@ -334,8 +335,8 @@
             }
 
             .sub-counter {
-                width: 80vw; /* Slightly wider on larger screens */
-                max-width: 360px; /* Adjusted for desktop */
+                width: 80vw;
+                max-width: 340px; /* Slightly reduced for consistency */
             }
         }
 
@@ -457,15 +458,24 @@
                 }, 300);
             };
 
-            // Automatyczne zwiększanie co 2 sekundy
-            setInterval(() => {
+            // Funkcja generująca losowy czas (1-5 sekund)
+            const getRandomDelay = () => {
+                return Math.floor(Math.random() * 4000) + 1000; // 1000ms to 5000ms
+            };
+
+            // Funkcja automatycznego zwiększania z losowym opóźnieniem
+            const autoIncrement = () => {
                 subCount++;
                 updateCounter();
-            }, 2000);
+                setTimeout(autoIncrement, getRandomDelay());
+            };
+
+            // Uruchom automatyczne zwiększanie
+            setTimeout(autoIncrement, getRandomDelay());
 
             // Interakcja z kliknięciem
             subCounter.addEventListener('click', (e) => {
-                e.preventDefault(); // Prevent text selection
+                e.preventDefault();
                 subCount++;
                 updateCounter();
 
