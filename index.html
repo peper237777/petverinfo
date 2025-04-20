@@ -232,6 +232,66 @@
             font-size: 0.85em;
         }
 
+        /* Subscription Counter Styles */
+        .sub-counter {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(40, 40, 40, 0.3), rgba(20, 20, 20, 0.1));
+            backdrop-filter: blur(15px);
+            border-radius: 24px;
+            border: 1px solid rgba(80, 80, 80, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            user-select: none;
+            margin: 20px auto;
+        }
+
+        .sub-counter:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .sub-counter:active {
+            transform: scale(0.95);
+        }
+
+        .sub-counter h2 {
+            margin: 0 0 10px;
+            font-size: 1.4em;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sub-count {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #fff;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+
+        .sub-count.increment {
+            animation: pop 0.3s ease;
+        }
+
+        .sub-counter .plus-one {
+            position: absolute;
+            color: #ffcc00;
+            font-size: 1.2em;
+            font-weight: bold;
+            opacity: 0;
+            transform: translateY(0);
+            pointer-events: none;
+        }
+
+        .sub-counter .plus-one.animate {
+            animation: float 0.8s ease-out forwards;
+        }
+
         @media (min-width: 600px) {
             .profile-header {
                 flex-direction: row;
@@ -264,6 +324,14 @@
             .about-container p {
                 font-size: 1em;
             }
+
+            .sub-counter h2 {
+                font-size: 1.6em;
+            }
+
+            .sub-count {
+                font-size: 3em;
+            }
         }
 
         @keyframes load {
@@ -293,6 +361,17 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes float {
+            0% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-50px); }
+        }
     </style>
 </head>
 <body>
@@ -308,6 +387,10 @@
     </div>
     <div class="content" id="content">
         <div class="profile-container">
+            <div class="sub-counter" id="subCounter">
+                <h2>Subskrypcje</h2>
+                <div class="sub-count" id="subCount">217517</div>
+            </div>
             <div class="profile-header">
                 <div class="profile-pic"></div>
                 <div class="profile-info">
@@ -354,6 +437,48 @@
                     }, 500);
                 }, 1000);
             }, 3000);
+
+            // Licznik subskrypcji
+            const subCounter = document.getElementById('subCounter');
+            const subCountElement = document.getElementById('subCount');
+            let subCount = 217517;
+
+            // Funkcja aktualizująca licznik
+            const updateCounter = () => {
+                subCountElement.textContent = subCount.toLocaleString('pl-PL');
+                subCountElement.classList.add('increment');
+                setTimeout(() => {
+                    subCountElement.classList.remove('increment');
+                }, 300);
+            };
+
+            // Automatyczne zwiększanie co 2 sekundy
+            setInterval(() => {
+                subCount++;
+                updateCounter();
+            }, 2000);
+
+            // Interakcja z kliknięciem
+            subCounter.addEventListener('click', (e) => {
+                subCount++;
+                updateCounter();
+
+                // Animacja +1
+                const plusOne = document.createElement('div');
+                plusOne.classList.add('plus-one');
+                plusOne.textContent = '+1';
+                plusOne.style.left = `${e.offsetX}px`;
+                plusOne.style.top = `${e.offsetY}px`;
+                subCounter.appendChild(plusOne);
+
+                plusOne.classList.add('animate');
+                setTimeout(() => {
+                    plusOne.remove();
+                }, 800);
+            });
+
+            // Inicjalne wyświetlenie liczby
+            updateCounter();
         };
     </script>
 </body>
