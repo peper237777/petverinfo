@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Darmowe Piny Brawl Stars</title>
+    <title>Darmowe Nagrody Brawl Stars</title>
     <style>
         * {
             margin: 0;
@@ -91,15 +91,19 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 700px;
             margin: 15px auto;
             padding: 15px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
         }
 
-        .pin-card {
+        .pin-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .pin-item {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 14px;
@@ -108,31 +112,33 @@
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
-            position: relative;
-            overflow: hidden;
             animation: scaleIn 0.8s ease-out;
             animation-fill-mode: both;
         }
 
-        .pin-card:nth-child(1) { animation-delay: 0.2s; }
-        .pin-card:nth-child(2) { animation-delay: 0.4s; }
-        .pin-card:nth-child(3) { animation-delay: 0.6s; }
-        .pin-card:nth-child(4) { animation-delay: 0.8s; }
+        .pin-item:nth-child(1) { animation-delay: 0.2s; }
+        .pin-item:nth-child(2) { animation-delay: 0.3s; }
+        .pin-item:nth-child(3) { animation-delay: 0.4s; }
+        .pin-item:nth-child(4) { animation-delay: 0.5s; }
+        .pin-item:nth-child(5) { animation-delay: 0.6s; }
+        .pin-item:nth-child(6) { animation-delay: 0.7s; }
+        .pin-item:nth-child(7) { animation-delay: 0.8s; }
+        .pin-item:nth-child(8) { animation-delay: 0.9s; }
 
-        .pin-card:hover {
+        .pin-item:hover {
             transform: translateY(-6px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
             background: rgba(255, 255, 255, 0.15);
         }
 
-        .pin-card h2 {
+        .pin-item h2 {
             font-size: 1.4rem;
             font-weight: 600;
             margin-bottom: 12px;
             color: #ffffff;
         }
 
-        .pin-card a {
+        .pin-item a {
             display: inline-block;
             background: rgba(255, 255, 255, 0.2);
             color: #ffffff;
@@ -146,13 +152,13 @@
             cursor: pointer;
         }
 
-        .pin-card a:hover {
+        .pin-item a:hover {
             background: rgba(255, 255, 255, 0.3);
             border-color: rgba(255, 255, 255, 0.5);
             transform: scale(1.05);
         }
 
-        .pin-card::before {
+        .pin-item::before {
             content: '';
             position: absolute;
             top: 0;
@@ -164,7 +170,7 @@
             transition: opacity 0.4s ease;
         }
 
-        .pin-card:hover::before {
+        .pin-item:hover::before {
             opacity: 1;
         }
 
@@ -208,18 +214,17 @@
 
             .container {
                 padding: 10px;
-                gap: 15px;
             }
 
-            .pin-card {
+            .pin-item {
                 padding: 15px;
             }
 
-            .pin-card h2 {
+            .pin-item h2 {
                 font-size: 1.2rem;
             }
 
-            .pin-card a {
+            .pin-item a {
                 padding: 7px 15px;
                 font-size: 0.8rem;
             }
@@ -230,7 +235,7 @@
                 font-size: 1.6rem;
             }
 
-            .pin-card {
+            .pin-item {
                 margin: 0 5px;
             }
         }
@@ -238,8 +243,8 @@
 </head>
 <body>
     <header>
-        <h1>Darmowe Piny Brawl Stars</h1>
-        <p>Odbierz ekskluzywne piny do Brawl Stars jednym kliknięciem. Aktywne teraz, nie przegap!</p>
+        <h1>Darmowe Nagrody Brawl Stars</h1>
+        <p>Odbierz ekskluzywne nagrody do Brawl Stars jednym kliknięciem. Aktywne teraz, nie przegap!</p>
     </header>
 
     <div class="warning">
@@ -247,7 +252,7 @@
     </div>
 
     <div class="instructions">
-        <h3>Jak odebrać piny?</h3>
+        <h3>Jak odebrać nagrody?</h3>
         <ul>
             <li>Upewnij się, że masz zainstalowaną grę Brawl Stars na swoim urządzeniu.</li>
             <li>Kliknij przycisk „Odbierz Teraz” w przeglądarce Chrome lub Safari (nie w aplikacjach typu Discord czy Facebook).</li>
@@ -257,22 +262,36 @@
     </div>
 
     <div class="container">
-        <div class="pin-card">
-            <h2>Pin Biały Spray</h2>
-            <a href="https://link.brawlstars.com/en/?action=voucher&code=315b3e4f-0fd5-4a31-a5b0-86806f7638fc" target="_blank" rel="noopener noreferrer">Odbierz Teraz</a>
-        </div>
-        <div class="pin-card">
-            <h2>Pin Klaun</h2>
-            <a href="https://link.brawlstars.com/en/?action=voucher&code=b647c71d-41a5-42c4-a10f-8d47952d82f3" target="_blank" rel="noopener noreferrer">Odbierz Teraz</a>
-        </div>
-        <div class="pin-card">
-            <h2>Pin Czaszka Kreskówkowa</h2>
-            <a href="https://link.brawlstars.com/en?action=voucher&code=2593e957-9cef-4ce7-b15f-b1dec74ec7df" target="_blank" rel="noopener noreferrer">Odbierz Teraz</a>
-        </div>
-        <div class="pin-card">
-            <h2>Pin Jajo Godzilli</h2>
-            <a href="https://link.brawlstars.com/en/?action=voucher&code=cc017c48-b904-448d-9fe1-dd494e28bfd2" target="_blank" rel="noopener noreferrer">Odbierz Teraz</a>
-        </div>
+        <ul class="pin-list">
+            <li class="pin-item">
+                <h2>Pin Pustynny</h2>
+                <a href="https://link.brawlstars.com/en/?action=voucher&code=315b3e4f-0fd5-4a31-a5b0-86806f7638fc" target="_blank" rel="noopener noreferrer">Odbierz Teraz</a>
+            </li>
+            <li class="pin-item">
+                <h2>Pin Klaun</h2>
+                <a href="https://link.brawlstars.com/en/?action=voucher&code=b647c71d-41a5-42c4-a10f-8d47952d82f3" target="_blank" rel="noopener noreferrer">Odbierz Teraz</a>
+            </li>
+            <li class="pin-item">
+                <h2>Pin Kreskówkowy</h2>
+                <a href="https://link.brawlstars.com/en/?action=voucher&code=2593e957-9cef-4ce7-b15f-b1dec74ec7df" target="_blank" rel="noopener noreferrer">Odbierz Teraz</a>
+            </li>
+            <li class="pin-item">
+                <h2>Pin Jajo</h2>
+                <a href="https://link.brawlstars.com/en/?action=voucher&code=cc017c48-b904-448d-9fe1-dd494e28bfd2" target="_blank" rel="noopener noreferrer">Odbierz Teraz</a>
+            </li>
+            <li class="pin-item">
+                <h2>Hiperładowanie</h2>
+                <a href="https://link.brawlstars.com/it/?action=voucher&code=10c89a6f-6669-41b3-bce8-62c6fe1d35f9" target="_blank" rel="noopener noreferrer">Odbierz Teraz</a>
+            </li>
+            <li class="pin-item">
+                <h2>100 Monet</h2>
+                <a href="https://link.brawlstars.com/en/?action=voucher&code=6bb96c6a-bb06-4b06-aae8-4de28c39474d" target="_blank" rel="noopener noreferrer">Odbierz Teraz</a>
+            </li>
+            <li class="pin-item">
+                <h2>Ikona Toy Story</h2>
+                <a href="https://link.brawlstars.com/en/?action=voucher&code=14bd0af6-fbcc-4666-b578-3f4cb39e8a06" target="_blank" rel="noopener noreferrer">Odbierz Teraz</a>
+            </li>
+        </ul>
     </div>
 </body>
 </html>
