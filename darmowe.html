@@ -1,1 +1,185 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darmowe Piny Brawl Stars</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
 
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #1d1d1f;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #6e6e73;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out 0.3s;
+            animation-fill-mode: both;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pin-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            animation: scaleIn 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .pin-card:nth-child(1) { animation-delay: 0.2s; }
+        .pin-card:nth-child(2) { animation-delay: 0.4s; }
+        .pin-card:nth-child(3) { animation-delay: 0.6s; }
+        .pin-card:nth-child(4) { animation-delay: 0.8s; }
+
+        .pin-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .pin-card h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1d1d1f;
+        }
+
+        .pin-card a {
+            display: inline-block;
+            background: #0071e3;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .pin-card a:hover {
+            background: #005bb5;
+            transform: scale(1.05);
+        }
+
+        .pin-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 113, 227, 0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .pin-card:hover::before {
+            opacity: 1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #6e6e73;
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            .pin-card {
+                padding: 20px;
+            }
+
+            .pin-card h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Darmowe Piny Brawl Stars</h1>
+        <p>Odbierz ekskluzywne piny do Brawl Stars jednym kliknięciem. Aktywne teraz, nie przegap!</p>
+    </header>
+
+    <div class="container">
+        <div class="pin-card">
+            <h2>Pin Biały Spray</h2>
+            <a href="https://link.brawlstars.com/en/?action=voucher&code=315b3e4f-0fd5-4a31-a5b0-86806f7638fc">Odbierz Teraz</a>
+        </div>
+        <div class="pin-card">
+            <h2>Pin Klaun</h2>
+            <a href="https://link.brawlstars.com/en/?action=voucher&code=b647c71d-41a5-42c4-a10f-8d47952d82f3">Odbierz Teraz</a>
+        </div>
+        <div class="pin-card">
+            <h2>Pin Czaszka Kreskówkowa</h2>
+            <a href="https://link.brawlstars.com/en?action=voucher&code=2593e957-9cef-4ce7-b15f-b1dec74ec7df">Odbierz Teraz</a>
+        </div>
+        <div class="pin-card">
+            <h2>Pin Jajo Godzilli</h2>
+            <a href="https://link.brawlstars.com/en/?action=voucher&code=cc017c48-b904-448d-9fe1-dd494e28bfd2">Odbierz Teraz</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Brawl Stars. Wszystkie prawa zastrzeżone.</p>
+    </footer>
+</body>
+</html>
