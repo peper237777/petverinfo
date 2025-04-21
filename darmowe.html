@@ -65,7 +65,7 @@
 
         .instructions {
             background: rgba(255, 255, 255, 0.05);
-            border: 1x solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 10px;
             padding: 15px;
             margin: 15px auto;
@@ -124,7 +124,6 @@
         .pin-item:nth-child(5) { animation-delay: 0.6s; }
         .pin-item:nth-child(6) { animation-delay: 0.7s; }
         .pin-item:nth-child(7) { animation-delay: 0.8s; }
-        .pin-item:nth-child(8) { animation-delay: 0.9s; }
 
         .pin-item:hover {
             transform: translateY(-6px);
@@ -139,19 +138,23 @@
             color: #ffffff;
         }
 
-        .pin-item button {
+        .pin-item a {
+            display: inline-block;
             background: rgba(255, 255, 255, 0.2);
             color: #ffffff;
             padding: 8px 18px;
             border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.3);
+            text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
             cursor: pointer;
             transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+            pointer-events: auto;
+            z-index: 1;
         }
 
-        .pin-item button:hover {
+        .pin-item a:hover {
             background: rgba(255, 255, 255, 0.3);
             border-color: rgba(255, 255, 255, 0.5);
             transform: scale(1.05);
@@ -167,6 +170,7 @@
             background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
             opacity: 0;
             transition: opacity 0.4s ease;
+            pointer-events: none;
         }
 
         .pin-item:hover::before {
@@ -223,7 +227,7 @@
                 font-size: 1.2rem;
             }
 
-            .pin-item button {
+            .pin-item a {
                 padding: 7px 15px;
                 font-size: 0.8rem;
             }
@@ -264,43 +268,33 @@
         <ul class="pin-list">
             <li class="pin-item">
                 <h2>Pin Pustynny</h2>
-                <button onclick="window.location.href='https://link.brawlstars.com/en/?action=voucher&code=315b3e4f-0fd5-4a31-a5b0-86806f7638fc'">Odbierz Teraz</button>
+                <a href="https://link.brawlstars.com/en/?action=voucher&code=315b3e4f-0fd5-4a31-a5b0-86806f7638fc" target="_blank" rel="noopener noreferrer">Odbierz Teraz</a>
             </li>
             <li class="pin-item">
                 <h2>Pin Klaun</h2>
-                <button onclick="window.location.href='https://link.brawlstars.com/en/?action=voucher&code=b647c71d-41a5-42c4-a10f-8d47952d82f3'">Odbierz Teraz</button>
+                <a href="https://link.brawlstars.com/en/?action=voucher&code=b647c71d-41a5-42c4-a10f-8d47952d82f3" target="_blank" rel="noopener noreferrer">Odbierz Teraz</a>
             </li>
             <li class="pin-item">
                 <h2>Pin Kreskówkowy</h2>
-                <button onclick="window.location.href='https://link.brawlstars.com/en/?action=voucher&code=2593e957-9cef-4ce7-b15f-b1dec74ec7df'">Odbierz Teraz</button>
+                <a href="https://link.brawlstars.com/en/?action=voucher&code=2593e957-9cef-4ce7-b15f-b1dec74ec7df" target="_blank" rel="noopener noreferrer">Odbierz Teraz</a>
             </li>
             <li class="pin-item">
                 <h2>Pin Jajo</h2>
-                <button onclick="window.location.href='https://link.brawlstars.com/en/?action=voucher&code=cc017c48-b904-448d-9fe1-dd494e28bfd2'">Odbierz Teraz</button>
+                <a href="https://link.brawlstars.com/en/?action=voucher&code=cc017c48-b904-448d-9fe1-dd494e28bfd2" target="_blank" rel="noopener noreferrer">Odbierz Teraz</a>
             </li>
             <li class="pin-item">
                 <h2>Hiperładowanie</h2>
-                <button onclick="window.location.href='https://link.brawlstars.com/it/?action=voucher&code=10c89a6f-6669-41b3-bce8-62c6fe1d35f9'">Odbierz Teraz</button>
+                <a href="https://link.brawlstars.com/it/?action=voucher&code=10c89a6f-6669-41b3-bce8-62c6fe1d35f9" target="_blank" rel="noopener noreferrer">Odbierz Teraz</a>
             </li>
             <li class="pin-item">
                 <h2>100 Monet</h2>
-                <button onclick="window.location.href='https://link.brawlstars.com/en/?action=voucher&code=6bb96c6a-bb06-4b06-aae8-4de28c39474d'">Odbierz Teraz</button>
+                <a href="https://link.brawlstars.com/en/?action=voucher&code=6bb96c6a-bb06-4b06-aae8-4de28c39474d" target="_blank" rel="noopener noreferrer">Odbierz Teraz</a>
             </li>
             <li class="pin-item">
                 <h2>Ikona Toy Story</h2>
-                <button onclick="window.location.href='https://link.brawlstars.com/en/?action=voucher&code=14bd0af6-fbcc-4666-b578-3f4cb39e8a06'">Odbierz Teraz</button>
+                <a href="https://link.brawlstars.com/en/?action=voucher&code=14bd0af6-fbcc-4666-b578-3f4cb39e8a06" target="_blank" rel="noopener noreferrer">Odbierz Teraz</a>
             </li>
         </ul>
     </div>
-
-    <script>
-        // Funkcja zapewniająca, że przyciski są klikalne
-        document.querySelectorAll('.pin-item button').forEach(button => {
-            button.addEventListener('click', () => {
-                const url = button.getAttribute('onclick').match(/'(.*?)'/)[1];
-                window.location.href = url;
-            });
-        });
-    </script>
 </body>
 </html>
