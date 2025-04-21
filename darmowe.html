@@ -24,50 +24,89 @@
 
         header {
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px 15px;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(12px);
-            border-radius: 20px;
-            margin: 20px;
+            border-radius: 16px;
+            margin: 15px;
             width: 90%;
-            max-width: 800px;
+            max-width: 700px;
             animation: fadeInDown 1s ease-out;
         }
 
         header h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
             letter-spacing: -0.02em;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             color: #ffffff;
         }
 
         header p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #a0a0a0;
-            max-width: 600px;
+            max-width: 500px;
             margin: 0 auto;
             animation: fadeInUp 1s ease-out 0.3s;
             animation-fill-mode: both;
         }
 
+        .warning {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 12px;
+            margin: 15px auto;
+            max-width: 90%;
+            text-align: center;
+            color: #ff6b6b;
+            font-size: 0.9rem;
+        }
+
+        .instructions {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px auto;
+            max-width: 90%;
+            color: #a0a0a0;
+            font-size: 0.9rem;
+        }
+
+        .instructions h3 {
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .instructions ul {
+            list-style: disc;
+            padding-left: 15px;
+            text-align: left;
+        }
+
+        .instructions li {
+            margin-bottom: 5px;
+        }
+
         .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
+            max-width: 1000px;
+            margin: 15px auto;
+            padding: 15px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
         }
 
         .pin-card {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 16px;
-            padding: 25px;
+            border-radius: 14px;
+            padding: 20px;
             text-align: center;
             backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
             position: relative;
             overflow: hidden;
@@ -81,15 +120,15 @@
         .pin-card:nth-child(4) { animation-delay: 0.8s; }
 
         .pin-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(-6px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
             background: rgba(255, 255, 255, 0.15);
         }
 
         .pin-card h2 {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             color: #ffffff;
         }
 
@@ -97,13 +136,14 @@
             display: inline-block;
             background: rgba(255, 255, 255, 0.2);
             color: #ffffff;
-            padding: 10px 20px;
-            border-radius: 10px;
+            padding: 8px 18px;
+            border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.3);
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 500;
             transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
         }
 
         .pin-card a:hover {
@@ -144,20 +184,54 @@
         }
 
         @media (max-width: 600px) {
+            header {
+                padding: 30px 10px;
+            }
+
             header h1 {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
             }
 
             header p {
+                font-size: 0.9rem;
+            }
+
+            .warning, .instructions {
+                margin: 10px auto;
+                padding: 10px;
+                font-size: 0.8rem;
+            }
+
+            .instructions h3 {
                 font-size: 1rem;
             }
 
+            .container {
+                padding: 10px;
+                gap: 15px;
+            }
+
             .pin-card {
-                padding: 20px;
+                padding: 15px;
             }
 
             .pin-card h2 {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
+            }
+
+            .pin-card a {
+                padding: 7px 15px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            header h1 {
+                font-size: 1.6rem;
+            }
+
+            .pin-card {
+                margin: 0 5px;
             }
         }
     </style>
@@ -168,22 +242,36 @@
         <p>Odbierz ekskluzywne piny do Brawl Stars jednym kliknięciem. Aktywne teraz, nie przegap!</p>
     </header>
 
+    <div class="warning">
+        <p><strong>Uwaga:</strong> Linki mogą nie działać, jeśli są wygasłe, nieaktywne lub otwierane na urządzeniu bez gry Brawl Stars. Sprawdź instrukcje poniżej.</p>
+    </div>
+
+    <div class="instructions">
+        <h3>Jak odebrać piny?</h3>
+        <ul>
+            <li>Upewnij się, że masz zainstalowaną grę Brawl Stars na swoim urządzeniu.</li>
+            <li>Kliknij przycisk „Odbierz Teraz” w przeglądarce Chrome lub Safari (nie w aplikacjach typu Discord czy Facebook).</li>
+            <li>Jeśli link nie działa, sprawdź skrzynkę odbiorczą w grze lub spróbuj później.</li>
+            <li>Linki mogą być ograniczone czasowo lub regionalnie.</li>
+        </ul>
+    </div>
+
     <div class="container">
         <div class="pin-card">
             <h2>Pin Biały Spray</h2>
-            <a href="https://link.brawlstars.com/en/?action=voucher&code=315b3e4f-0fd5-4a31-a5b0-86806f7638fc">Odbierz Teraz</a>
+            <a href="https://link.brawlstars.com/en/?action=voucher&code=315b3e4f-0fd5-4a31-a5b0-86806f7638fc" target="_blank" rel="noopener noreferrer">Odbierz Teraz</a>
         </div>
         <div class="pin-card">
             <h2>Pin Klaun</h2>
-            <a href="https://link.brawlstars.com/en/?action=voucher&code=b647c71d-41a5-42c4-a10f-8d47952d82f3">Odbierz Teraz</a>
+            <a href="https://link.brawlstars.com/en/?action=voucher&code=b647c71d-41a5-42c4-a10f-8d47952d82f3" target="_blank" rel="noopener noreferrer">Odbierz Teraz</a>
         </div>
         <div class="pin-card">
             <h2>Pin Czaszka Kreskówkowa</h2>
-            <a href="https://link.brawlstars.com/en?action=voucher&code=2593e957-9cef-4ce7-b15f-b1dec74ec7df">Odbierz Teraz</a>
+            <a href="https://link.brawlstars.com/en?action=voucher&code=2593e957-9cef-4ce7-b15f-b1dec74ec7df" target="_blank" rel="noopener noreferrer">Odbierz Teraz</a>
         </div>
         <div class="pin-card">
             <h2>Pin Jajo Godzilli</h2>
-            <a href="https://link.brawlstars.com/en/?action=voucher&code=cc017c48-b904-448d-9fe1-dd494e28bfd2">Odbierz Teraz</a>
+            <a href="https://link.brawlstars.com/en/?action=voucher&code=cc017c48-b904-448d-9fe1-dd494e28bfd2" target="_blank" rel="noopener noreferrer">Odbierz Teraz</a>
         </div>
     </div>
 </body>
