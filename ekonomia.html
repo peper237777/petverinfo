@@ -1,1 +1,214 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekonomia - Poradnik</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            margin: 0;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(90deg, #ffffff, #a1a1a1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') no-repeat center/cover;
+            background-attachment: fixed;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="text-center px-4">
+            <h1 class="section-title text-5xl md:text-7xl">Ekonomia: Twój klucz do bogactwa</h1>
+            <p class="text-xl md:text-2xl mt-4 text-gray-300">Zbieraj gemy, odkrywaj skrzynki i zdobywaj przewagę w świecie ekonomii!</p>
+            <a href="#guide" class="mt-8 inline-block px-8 py-4 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition">Rozpocznij przygodę</a>
+        </div>
+    </section>
 
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-6 py-20">
+        <!-- Schowki -->
+        <section class="mb-20 animate-on-scroll">
+            <h2 class="section-title text-4xl mb-8">Schowki: Bezpieczeństwo Twoich gemów</h2>
+            <div class="glass-card p-8">
+                <p class="text-lg text-gray-200">Nowość! Schowki to idealne miejsce do ukrycia dowolnej ilości gemów. Są niewidoczne dla komend <strong>!crime</strong> i <strong>!slut</strong>, a nawet policja ich nie znajdzie. Kup je w sklepie w kategorii <strong>SCHOWKI</strong>!</p>
+            </div>
+        </section>
+
+        <!-- Sekretne Laboratorium -->
+        <section class="mb-20 animate-on-scroll">
+            <h2 class="section-title text-4xl mb-8">Sekretne Laboratorium</h2>
+            <div class="glass-card p-8">
+                <p class="text-lg text-gray-200">Zdobądź dostęp do tajemnego laboratorium! Wystarczy wylosować jedną z trzech sekretnych ról z przystępnych cenowo skrzynek w kategorii <strong>SEKRETNE</strong>. Dołącz do elity już dziś!</p>
+            </div>
+        </section>
+
+        <!-- Star Power: Hazardzista -->
+        <section class="mb-20 animate-on-scroll">
+            <h2 class="section-title text-4xl mb-8">Star Power: Hazardzista</h2>
+            <div class="glass-card p-8">
+                <p class="text-lg text-gray-200">Poznaj <strong>Hazardzistę</strong> – nowy Star Power z komendą <strong>!hazard</strong>, najbardziej ryzykowną w historii! Kup go w <strong>!shop</strong>, zakładka Star Powery, strona 2.</p>
+            </div>
+        </section>
+
+        <!-- Poradnik Ekonomii -->
+        <section id="guide" class="animate-on-scroll">
+            <h2 class="section-title text-4xl mb-8">Poradnik Ekonomii</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Podstawowa Praca -->
+                <div class="glass-card p-8">
+                    <h3 class="text-2xl font-bold mb-4">Podstawowa Praca</h3>
+                    <ul class="text-gray-200 space-y-2">
+                        <li><strong>!work</strong>: Co 30 sekund, zarobek 70–300 gemów.</li>
+                        <li><strong>!slut</strong>: Co 30 sekund, zarobek 100–400 gemów, 10% szansy na stratę.</li>
+                        <li><strong>!crime</strong>: Co 1 minutę, zarobek 250–700 gemów, 20% szansy na stratę.</li>
+                    </ul>
+                </div>
+                <!-- Rabunki -->
+                <div class="glass-card p-8">
+                    <h3 class="text-2xl font-bold mb-4">Rabunki</h3>
+                    <p class="text-gray-200">Okradaj innych graczy za pomocą <strong>!rob</strong>. Chron gemy w banku, wpłacając je komendą <strong>!dep kwota</strong>. Uważaj na serwerową policję!</p>
+                </div>
+                <!-- Wpłaty i Wypłaty -->
+                <div class="glass-card p-8">
+                    <h3 class="text-2xl font-bold mb-4">Wpłaty i Wypłaty</h3>
+                    <p class="text-gray-200"><strong>!dep</strong>: Wpłaty z 1% prowizją. <strong>!with</strong>: Wypłaty bez prowizji.</p>
+                </div>
+                <!-- Sklep i Ulepszenia -->
+                <div class="glass-card p-8">
+                    <h3 class="text-2xl font-bold mb-4">Sklep i Ulepszenia</h3>
+                    <p class="text-gray-200">W <strong>!shop</strong> znajdziesz skrzynki (np. MEGASWINIA, STARR DROP) i ulepszenia, takie jak mnożniki.</p>
+                </div>
+                <!-- Skrzynki -->
+                <div class="glass-card p-8">
+                    <h3 class="text-2xl font-bold mb-4">Skrzynki</h3>
+                    <p class="text-gray-200">Skrzynki to ryzyko i nagroda! Np. MEGASWINIA (100,000 gemów) daje od 40,000 do 250,000 gemów.</p>
+                </div>
+                <!-- Kupowanie i Używanie -->
+                <div class="glass-card p-8">
+                    <h3 class="text-2xl font-bold mb-4">Kupowanie i Używanie</h3>
+                    <p class="text-gray-200">Kupuj (<strong>!buy nazwa</strong>) i używaj (<strong>!use nazwa</strong>) przedmioty, np. <strong>!buy MEGASWINIA</strong>.</p>
+                </div>
+                <!-- Konto Bankowe -->
+                <div class="glass-card p-8">
+                    <h3 class="text-2xl font-bold mb-4">Konto Bankowe</h3>
+                    <p class="text-gray-200">Sprawdź saldo: <strong>!bal</strong>. Zobacz najbogatszych: <strong>!baltop</strong>.</p>
+                </div>
+                <!-- Przelewy i Darowizny -->
+                <div class="glass-card p-8">
+                    <h3 class="text-2xl font-bold mb-4">Przelewy i Darowizny</h3>
+                    <p class="text-gray-200">Przelewaj gemy (<strong>!pay</strong>) lub proś o darowizny (<strong>!popros nick</strong>).</p>
+                </div>
+                <!-- Openingi -->
+                <div class="glass-card p-8">
+                    <h3 class="text-2xl font-bold mb-4">Openingi</h3>
+                    <p class="text-gray-200">Kup wiele skrzynek i otwórz je z rozmachem! Pamiętaj o cooldownie na ponowne otwarcie.</p>
+                </div>
+                <!-- Star Powery -->
+                <div class="glass-card p-8">
+                    <h3 class="text-2xl font-bold mb-4">Star Powery</h3>
+                    <p class="text-gray-200">Wzmocnij swoją ekonomię dzięki Star Powerom z unikalnymi bonusami.</p>
+                </div>
+                <!-- Plecaki -->
+                <div class="glass-card p-8">
+                    <h3 class="text-2xl font-bold mb-4">Plecaki</h3>
+                    <p class="text-gray-200">Zwiększ pojemność gemów, kupując plecaki w kategorii <strong>PLECAKI</strong>.</p>
+                </div>
+                <!-- Tytuły Gracza -->
+                <div class="glass-card p-8">
+                    <h3 class="text-2xl font-bold mb-4">Tytuły Gracza</h3>
+                    <p class="text-gray-200">Zdobądź stylowe tytuły z mnożnikami w kategorii <strong>TYTUŁY GRACZA</strong>. Reset co sezon.</p>
+                </div>
+                <!-- Złote Skrzynki -->
+                <div class="glass-card p-8">
+                    <h3 class="text-2xl font-bold mb-4">Złote Skrzynki</h3>
+                    <p class="text-gray-200">Wymagają Star Powera <strong>GOLDEN</strong>. Zawierają koparki gemów (1000–20,000/h), odbierane co 4 godziny.</p>
+                </div>
+                <!-- Mutacje -->
+                <div class="glass-card p-8">
+                    <h3 class="text-2xl font-bold mb-4">Mutacje</h3>
+                    <p class="text-gray-200">Zdobądź stałe wypłaty z komendą <strong>!collect</strong>. Szukaj ich w kategorii <strong>MUTACJE</strong>.</p>
+                </div>
+                <!-- Zadymiarze -->
+                <div class="glass-card p-8">
+                    <h3 class="text-2xl font-bold mb-4">Zadymiarze</h3>
+                    <p class="text-gray-200">Sezon 2 wprowadza 4 nowych zadymiarzy! Wypłaty dla istniejących zadymiarzy zostały ulepszone. Masz czwórkę z sezonu 1? Otwórz <strong>SKRZYNKĘ ZADYMIARSKĄ</strong>, by zdobyć nowych!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-10 text-center text-gray-400">
+        <p>© 2025 Ekonomia. Wszystkie prawa zastrzeżone.</p>
+    </footer>
+
+    <!-- GSAP Animations -->
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animacje dla sekcji przewijanych
+        gsap.utils.toArray(".animate-on-scroll").forEach((element) => {
+            gsap.fromTo(
+                element,
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1.2,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 85%",
+                        toggleActions: "play none none none",
+                    },
+                }
+            );
+        });
+
+        // Animacje dla sekcji hero
+        gsap.from(".hero h1", { opacity: 0, y: 100, duration: 1.5, ease: "power4.out" });
+        gsap.from(".hero p", { opacity: 0, y: 50, duration: 1.5, delay: 0.3, ease: "power4.out" });
+        gsap.from(".hero a", { opacity: 0, scale: 0.8, duration: 1, delay: 0.6, ease: "back.out(1.7)" });
+    </script>
+</body>
+</html>
