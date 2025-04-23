@@ -66,6 +66,8 @@
             max-width: 600px;
             width: 90%;
             color: #fff;
+            position: relative;
+            overflow: hidden;
         }
         .quiz-option {
             padding: 1rem;
@@ -73,16 +75,27 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 10px;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.2s ease;
         }
         .quiz-option:hover {
             background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.02);
         }
         .correct {
             background: rgba(0, 255, 0, 0.3) !important;
+            transform: scale(1.05);
         }
         .incorrect {
             background: rgba(255, 0, 0, 0.3) !important;
+            transform: scale(0.95);
+        }
+        .star {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            opacity: 0;
         }
         .hero button, .hero a {
             position: relative;
@@ -134,7 +147,7 @@
         <section class="mb-20 animate-on-scroll">
             <h2 class="section-title text-4xl mb-8">Sekretne Laboratorium</h2>
             <div class="glass-card p-8">
-                <p class="text-lg text DMC-Gothic-200 text-gray-200">Zdobądź dostęp do tajemnego laboratorium! Wystarczy wylosować jedną z trzech sekretnych ról z przystępnych cenowo skrzynek w kategorii <strong>SEKRETNE</strong>. Dołącz do elity już dziś!</p>
+                <p class="text-lg text-gray-200">Zdobądź dostęp do tajemnego laboratorium! Wystarczy wylosować jedną z trzech sekretnych ról z przystępnych cenowo skrzynek w kategorii <strong>SEKRETNE</strong>. Dołącz do elity już dziś!</p>
             </div>
         </section>
 
@@ -142,7 +155,7 @@
         <section class="mb-20 animate-on-scroll">
             <h2 class="section-title text-4xl mb-8">Star Power: Hazardzista</h2>
             <div class="glass-card p-8">
-                <p class="text-lg text-gray-200">Poznaj <strong>Hazardzistę</strong> – nowy Star Power z komendą <strong>!hazard</strong>, najbardziej ryzykowną w historii! Kup go w <strong>!shop</strong>, zakładka Star Powery, strona 2.</p>
+                <p class="text-lg text-gray-200">Poznaj <strong>Hazardzistę</strong> – nowy Star Power z komendą <strong>!hazard</strong>, najbardziej ryzykowną w historii! Kup go w <strong>!shop</strong> w zakładce Star Powery.</p>
             </div>
         </section>
 
@@ -251,7 +264,7 @@
                     opacity: 1,
                     y: 0,
                     duration: 1.2,
-                    ease: "power3.out",
+                    ease: "power4.out",
                     scrollTrigger: {
                         trigger: element,
                         start: "top 85%",
@@ -296,67 +309,67 @@
             },
             {
                 question: "Jaki jest maksymalny zarobek z komendy !crime?",
-                options: ["400 gemów", "700 gemów", "250 gemów"],
+                options: ["400 gemów", "700 gemów", "1000 gemów"],
                 correct: 1
             },
             {
-                question: "Co chroni gemy przed kradzieżą w komendzie !rob?",
-                options: ["Schowki", "Bank (!dep)", "Plecak"],
+                question: "Co chroni gemy przed komendami !crime i !slut?",
+                options: ["Plecaki", "Schowki", "Tytuły"],
                 correct: 1
             },
             {
                 question: "Czy wpłaty i wypłaty mają prowizję?",
-                options: ["Tak, 1%", "Nie, są darmowe", "Tylko wpłaty"],
+                options: ["Tak, 1%", "Nie, są darmowe", "Tylko wypłaty"],
                 correct: 1
             },
             {
-                question: "Gdzie kupisz Star Power Hazardzista?",
-                options: ["!shop, strona 1", "!shop, strona 2", "!buy hazard"],
-                correct: 1
+                question: "Co daje Star Power Hazardzista?",
+                options: ["Komendę !hazard", "Darmowe gemy", "Większy plecak"],
+                correct: 0
             },
             {
                 question: "Co jest wymagane do zakupu Złotych Skrzynek?",
-                options: ["Star Power GOLDEN", "Sekretna rola", "Plecak"],
+                options: ["Star Power GOLDEN", "Mutacje", "Sekretna rola"],
                 correct: 0
             },
             {
-                question: "Jaką komendą sprawdzisz saldo konta?",
-                options: ["!bal", "!baltop", "!dep"],
+                question: "Jaką komendą sprawdzisz stan konta?",
+                options: ["!bal", "!pay", "!dep"],
                 correct: 0
             },
             {
-                question: "Co może wypaść z MEGASWINI?",
-                options: ["40,000–250,000 gemów", "10,000–50,000 gemów", "100,000 gemów"],
+                question: "Co może wypaść z skrzynki MEGASWINIA?",
+                options: ["40,000–250,000 gemów", "10,000–50,000 gemów", "500,000 gemów"],
                 correct: 0
             },
             {
                 question: "Jak odblokować Sekretne Laboratorium?",
-                options: ["Kupić skrzynkę SEKRETNE", "Użyć !hazard", "Zdobyć Star Power"],
+                options: ["Zdobyć sekretną rolę", "Użyć !hazard", "Kupić plecak"],
                 correct: 0
             },
             {
                 question: "Co daje komenda !collect?",
-                options: ["Wypłaty z Mutacji", "Gemy z koparek", "Darowizny"],
+                options: ["Wypłaty z Mutacji", "Gemy z plecaka", "Darowizny"],
                 correct: 0
             },
             {
                 question: "Jak często odbierasz gemy z koparek w Złotych Skrzynkach?",
-                options: ["Co 2 godziny", "Co 4 godziny", "Co 1 godzinę"],
-                correct: 1
+                options: ["Co 4 godziny", "Co 1 godzinę", "Co 8 godzin"],
+                correct: 0
             },
             {
                 question: "Co resetuje się co sezon?",
-                options: ["Plecaki", "Tytuły Gracza", "Star Powery"],
+                options: ["Star Powery", "Tytuły Gracza", "Schowki"],
                 correct: 1
             },
             {
                 question: "Jaka jest szansa na niepowodzenie w komendzie !slut?",
-                options: ["10%", "20%", "5%"],
-                correct: 0
+                options: ["5%", "10%", "20%"],
+                correct: 1
             },
             {
-                question: "Co możesz zrobić komendą !popros?",
-                options: ["Przelewać gemy", "Prosić o darowiznę", "Kupić skrzynkę"],
+                question: "Co robisz komendą !popros?",
+                options: ["Przelew gemów", "Prośba o darowiznę", "Otwarcie skrzynki"],
                 correct: 1
             },
             {
@@ -366,27 +379,27 @@
             },
             {
                 question: "Co kupisz w kategorii PLECAKI?",
-                options: ["Większy plecak", "Tytuły", "Mutacje"],
+                options: ["Większy plecak", "Mutacje", "Koparki gemów"],
                 correct: 0
             },
             {
-                question: "Jaką komendą używasz zakupione przedmioty?",
-                options: ["!buy", "!use", "!shop"],
+                question: "Jaką komendą używasz zakupionych przedmiotów?",
+                options: ["!buy", "!use", "!pay"],
                 correct: 1
             },
             {
-                question: "Co daje Star Power Hazardzista?",
-                options: ["Komendę !hazard", "Mnożnik gemów", "Dostęp do laboratorium"],
-                correct: 0
+                question: "Jaką komendą okradziesz innego gracza?",
+                options: ["!crime", "!rob", "!slut"],
+                correct: 1
             },
             {
-                question: "Gdzie znajdziesz listę najbogatszych graczy?",
-                options: ["!bal", "!baltop", "!pay"],
+                question: "Co pokazuje komenda !baltop?",
+                options: ["Twoje saldo", "Najbogatszych graczy", "Darowizny"],
                 correct: 1
             },
             {
                 question: "Co zawiera Skrzynka Zadymiarska dla graczy z sezonu 1?",
-                options: ["Tylko nowych zadymiarzy", "Stare zadymiarze", "Koparki gemów"],
+                options: ["Nowych zadymiarzy", "Koparki gemów", "Tytuły"],
                 correct: 0
             }
         ];
@@ -396,7 +409,7 @@
 
         function loadQuestion() {
             const q = questions[currentQuestion];
-            questionEl.textContent = `Pytanie ${currentQuestion + 1}: ${q.question}`;
+            questionEls.textContent = `Pytanie ${currentQuestion + 1}: ${q.question}`;
             optionsEl.innerHTML = "";
             q.options.forEach((option, index) => {
                 const div = document.createElement("div");
@@ -407,7 +420,8 @@
             });
             feedbackEl.textContent = "";
             nextQuestionBtn.style.display = "none";
-            gsap.from(".quiz-option", { opacity: 0, y: 20, duration: 0.5, stagger: 0.1 });
+            gsap.from("#question", { opacity: 0, y: -30, duration: 0.8, ease: "power4.out" });
+            gsap.from(".quiz-option", { opacity: 0, x: 50, duration: 0.6, stagger: 0.1, ease: "power4.out" });
         }
 
         function checkAnswer(selected) {
@@ -428,14 +442,54 @@
                 option.onclick = null;
             }
             nextQuestionBtn.style.display = "block";
-            gsap.from("#feedback", { opacity: 0, duration: 0.5 });
+            gsap.from("#feedback", { opacity: 0, scale: 0.8, duration: 0.5, ease: "back.out(1.7)" });
+            gsap.from("#nextQuestion", { opacity: 0, y: 20, duration: 0.5, ease: "power4.out" });
+        }
+
+        function createStars(container, count) {
+            for (let i = 0; i < count; i++) {
+                const star = document.createElement("div");
+                star.className = "star";
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                container.appendChild(star);
+                gsap.to(star, {
+                    opacity: 1,
+                    scale: Math.random() * 1.5 + 0.5,
+                    x: (Math.random() - 0.5) * 200,
+                    y: (Math.random() - 0.5) * 200,
+                    rotation: Math.random() * 360,
+                    duration: 1.5,
+                    ease: "power2.out",
+                    delay: Math.random() * 0.5,
+                    onComplete: () => {
+                        gsap.to(star, { opacity: 0, duration: 0.5, delay: Math.random() });
+                    }
+                });
+            }
         }
 
         function showResults() {
             quizModal.style.display = "none";
-            alert(`Twój wynik: ${score}/20! ${score >= 16 ? "Świetna robota!" : score >= 10 ? "Nieźle, ale jeszcze poćwicz!" : "Czas wrócić do poradnika!"}`);
-            currentQuestion = 0;
-            score = 0;
+            const resultModal = document.createElement("div");
+            resultModal.className = "quiz-container";
+            resultModal.innerHTML = `
+                <h2 class="text-3xl font-bold mb-4">Twój wynik!</h2>
+                <p class="text-2xl mb-4">${score}/20</p>
+                <p class="text-lg">${score >= 16 ? "Świetna robota!" : score >= 10 ? "Nieźle, ale jeszcze poćwicz!" : "Czas wrócić do poradnika!"}</p>
+                <button id="closeResult" class="mt-6 px-6 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition">Zamknij</button>
+            `;
+            quizModal.innerHTML = "";
+            quizModal.appendChild(resultModal);
+            quizModal.style.display = "flex";
+            createStars(resultModal, 50);
+            gsap.from(resultModal, { scale: 0.5, opacity: 0, duration: 1, ease: "back.out(2)" });
+            gsap.from(resultModal.children, { opacity: 0, y: 20, duration: 0.8, stagger: 0.2, ease: "power4.out", delay: 0.5 });
+            document.getElementById("closeResult").onclick = () => {
+                quizModal.style.display = "none";
+                currentQuestion = 0;
+                score = 0;
+            };
         }
 
         startQuizBtn.onclick = () => {
