@@ -40,7 +40,58 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
+            background: linear-gradient(180deg, #000000 0%, #0f0f0f 100%);
+        }
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 800px;
+            padding: 0 1rem;
+        }
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #d1d1d1;
+            margin-bottom: 2rem;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .hero button, .hero a {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .hero a {
+            background: #ffffff;
+            color: #000000;
+        }
+        .hero a:hover {
+            background: #e0e0e0;
+            transform: scale(1.05);
+        }
+        .hero button {
+            background: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+        }
+        .hero button:hover {
+            background: #ffffff;
+            color: #000000;
+            transform: scale(1.05);
         }
         .animate-on-scroll {
             opacity: 0;
@@ -97,13 +148,20 @@
             clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
             opacity: 0;
         }
-        .hero button, .hero a {
-            position: relative;
-            z-index: 10;
-        }
         @media (max-width: 768px) {
-            .section-title {
+            .section-title, .hero h1 {
                 font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+            .hero button, .hero a {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
             }
         }
     </style>
@@ -111,12 +169,12 @@
 <body>
     <!-- Hero Section -->
     <section class="hero">
-        <div class="text-center px-4">
-            <h1 class="section-title text-5xl md:text-7xl">Ekonomia: Twój klucz do bogactwa</h1>
-            <p class="text-xl md:text-2xl mt-4 text-gray-300">Zbieraj gemy, odkrywaj skrzynki i zdobywaj przewagę w świecie ekonomii!</p>
-            <div class="mt-8 space-x-4">
-                <a href="#guide" class="inline-block px-8 py-4 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition">Rozpocznij przygodę</a>
-                <button id="startQuiz" class="inline-block px-8 py-4 bg-transparent border border-white text-white rounded-full font-semibold hover:bg-white hover:text-black transition">Samouczek</button>
+        <div class="hero-content">
+            <h1 class="section-title">Ekonomia: Twój klucz do bogactwa</h1>
+            <p>Zbieraj gemy, odkrywaj skrzynki i zdobywaj przewagę w świecie ekonomii!</p>
+            <div class="hero-buttons">
+                <a href="#guide">Rozpocznij przygodę</a>
+                <button id="startQuiz">Samouczek</button>
             </div>
         </div>
     </section>
@@ -274,18 +332,32 @@
             );
         });
 
-        // Animacje dla sekcji hero
-        gsap.from(".hero h1", { opacity: 0, y: 100, duration: 1.5, ease: "power4.out" });
-        gsap.from(".hero p", { opacity: 0, y: 50, duration: 1.5, delay: 0.3, ease: "power4.out" });
-        gsap.from(".hero a, .hero button", { 
-            autoAlpha: 0, 
+        // Ultrapłynne animacje dla sekcji hero
+        gsap.from(".hero h1", { 
+            opacity: 0, 
+            scale: 0.9, 
+            y: 50, 
+            duration: 2, 
+            ease: "power4.inOut", 
+            delay: 0.2 
+        });
+        gsap.from(".hero p", { 
+            opacity: 0, 
+            y: 30, 
+            duration: 1.8, 
+            ease: "power4.inOut", 
+            delay: 0.5 
+        });
+        gsap.from(".hero-buttons a, .hero-buttons button", { 
+            opacity: 0, 
             scale: 0.8, 
-            duration: 1, 
-            delay: 0.6, 
-            ease: "back.out(1.7)", 
-            stagger: 0.2,
+            y: 20, 
+            duration: 1.5, 
+            ease: "elastic.out(1, 0.5)", 
+            stagger: 0.3, 
+            delay: 0.8,
             onComplete: () => {
-                document.querySelectorAll(".hero a, .hero button").forEach(el => {
+                document.querySelectorAll(".hero-buttons a, .hero-buttons button").forEach(el => {
                     el.style.opacity = 1;
                     el.style.visibility = "visible";
                 });
@@ -409,7 +481,7 @@
 
         function loadQuestion() {
             const q = questions[currentQuestion];
-            questionEls.textContent = `Pytanie ${currentQuestion + 1}: ${q.question}`;
+            questionEl.textContent = `Pytanie ${currentQuestion + 1}: ${q.question}`;
             optionsEl.innerHTML = "";
             q.options.forEach((option, index) => {
                 const div = document.createElement("div");
