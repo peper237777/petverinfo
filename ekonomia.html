@@ -40,12 +40,50 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') no-repeat center/cover;
+            background: url('https://i.imgur.com/euOqLlz.jpeg') no-repeat center/cover;
             background-attachment: fixed;
         }
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(50px);
+        }
+        #quizModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .quiz-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            color: #fff;
+        }
+        .quiz-option {
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .quiz-option:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .correct {
+            background: rgba(0, 255, 0, 0.3) !important;
+        }
+        .incorrect {
+            background: rgba(255, 0, 0, 0.3) !important;
         }
         @media (max-width: 768px) {
             .section-title {
@@ -60,9 +98,24 @@
         <div class="text-center px-4">
             <h1 class="section-title text-5xl md:text-7xl">Ekonomia: Twój klucz do bogactwa</h1>
             <p class="text-xl md:text-2xl mt-4 text-gray-300">Zbieraj gemy, odkrywaj skrzynki i zdobywaj przewagę w świecie ekonomii!</p>
-            <a href="#guide" class="mt-8 inline-block px-8 py-4 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition">Rozpocznij przygodę</a>
+            <div class="mt-8 space-x-4">
+                <a href="#guide" class="inline-block px-8 py-4 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition">Rozpocznij przygodę</a>
+                <button id="startQuiz" class="inline-block px-8 py-4 bg-transparent border border-white text-white rounded-full font-semibold hover:bg-white hover:text-black transition">Samouczek</button>
+            </div>
         </div>
     </section>
+
+    <!-- Quiz Modal -->
+    <div id="quizModal">
+        <div class="quiz-container">
+            <h2 class="text-2xl font-bold mb-4">Quiz Ekonomii</h2>
+            <p id="question" class="text-lg mb-6"></p>
+            <div id="options" class="space-y-2"></div>
+            <p id="feedback" class="mt-4 text-lg"></p>
+            <button id="nextQuestion" class="mt-6 px-6 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition">Następne pytanie</button>
+            <p id="score" class="mt-4 text-lg"></p>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-6 py-20">
@@ -111,7 +164,7 @@
                 <!-- Wpłaty i Wypłaty -->
                 <div class="glass-card p-8">
                     <h3 class="text-2xl font-bold mb-4">Wpłaty i Wypłaty</h3>
-                    <p class="text-gray-200"><strong>!dep</strong>: Wpłaty z 1% prowizją. <strong>!with</strong>: Wypłaty bez prowizji.</p>
+                    <p class="text-gray-200"><strong>!dep</strong> i <strong>!with</strong>: Wpłaty i wypłaty są całkowicie darmowe, bez żadnych prowizji.</p>
                 </div>
                 <!-- Sklep i Ulepszenia -->
                 <div class="glass-card p-8">
@@ -182,7 +235,7 @@
         <p>© 2025 Ekonomia. Wszystkie prawa zastrzeżone.</p>
     </footer>
 
-    <!-- GSAP Animations -->
+    <!-- GSAP Animations and Quiz Logic -->
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
@@ -208,7 +261,189 @@
         // Animacje dla sekcji hero
         gsap.from(".hero h1", { opacity: 0, y: 100, duration: 1.5, ease: "power4.out" });
         gsap.from(".hero p", { opacity: 0, y: 50, duration: 1.5, delay: 0.3, ease: "power4.out" });
-        gsap.from(".hero a", { opacity: 0, scale: 0.8, duration: 1, delay: 0.6, ease: "back.out(1.7)" });
+        gsap.from(".hero a, .hero button", { opacity: 0, scale: 0.8, duration: 1, delay: 0.6, ease: "back.out(1.7)", stagger: 0.2 });
+
+        // Quiz Logic
+        const quizModal = document.getElementById("quizModal");
+        const startQuizBtn = document.getElementById("startQuiz");
+        const questionEl = document.getElementById("question");
+        const optionsEl = document.getElementById("options");
+        const feedbackEl = document.getElementById("feedback");
+        const nextQuestionBtn = document.getElementById("nextQuestion");
+        const scoreEl = document.getElementById("score");
+
+        const questions = [
+            {
+                question: "Jak często możesz użyć komendy !work?",
+                options: ["Co 30 sekund", "Co 1 minutę", "Co 10 sekund"],
+                correct: 0
+            },
+            {
+                question: "Jaki jest maksymalny zarobek z komendy !crime?",
+                options: ["400 gemów", "700 gemów", "250 gemów"],
+                correct: 1
+            },
+            {
+                question: "Co chroni gemy przed kradzieżą w komendzie !rob?",
+                options: ["Schowki", "Bank (!dep)", "Plecak"],
+                correct: 1
+            },
+            {
+                question: "Czy wpłaty i wypłaty mają prowizję?",
+                options: ["Tak, 1%", "Nie, są darmowe", "Tylko wpłaty"],
+                correct: 1
+            },
+            {
+                question: "Gdzie kupisz Star Power Hazardzista?",
+                options: ["!shop, strona 1", "!shop, strona 2", "!buy hazard"],
+                correct: 1
+            },
+            {
+                question: "Co jest wymagane do zakupu Złotych Skrzynek?",
+                options: ["Star Power GOLDEN", "Sekretna rola", "Plecak"],
+                correct: 0
+            },
+            {
+                question: "Jaką komendą sprawdzisz saldo konta?",
+                options: ["!bal", "!baltop", "!dep"],
+                correct: 0
+            },
+            {
+                question: "Co może wypaść z MEGASWINI?",
+                options: ["40,000–250,000 gemów", "10,000–50,000 gemów", "100,000 gemów"],
+                correct: 0
+            },
+            {
+                question: "Jak odblokować Sekretne Laboratorium?",
+                options: ["Kupić skrzynkę SEKRETNE", "Użyć !hazard", "Zdobyć Star Power"],
+                correct: 0
+            },
+            {
+                question: "Co daje komenda !collect?",
+                options: ["Wypłaty z Mutacji", "Gemy z koparek", "Darowizny"],
+                correct: 0
+            },
+            {
+                question: "Jak często odbierasz gemy z koparek w Złotych Skrzynkach?",
+                options: ["Co 2 godziny", "Co 4 godziny", "Co 1 godzinę"],
+                correct: 1
+            },
+            {
+                question: "Co resetuje się co sezon?",
+                options: ["Plecaki", "Tytuły Gracza", "Star Powery"],
+                correct: 1
+            },
+            {
+                question: "Jaka jest szansa na niepowodzenie w komendzie !slut?",
+                options: ["10%", "20%", "5%"],
+                correct: 0
+            },
+            {
+                question: "Co możesz zrobić komendą !popros?",
+                options: ["Przelewać gemy", "Prosić o darowiznę", "Kupić skrzynkę"],
+                correct: 1
+            },
+            {
+                question: "Ile nowych zadymiarzy dodano w sezonie 2?",
+                options: ["2", "4", "6"],
+                correct: 1
+            },
+            {
+                question: "Co kupisz w kategorii PLECAKI?",
+                options: ["Większy plecak", "Tytuły", "Mutacje"],
+                correct: 0
+            },
+            {
+                question: "Jaką komendą używasz zakupione przedmioty?",
+                options: ["!buy", "!use", "!shop"],
+                correct: 1
+            },
+            {
+                question: "Co daje Star Power Hazardzista?",
+                options: ["Komendę !hazard", "Mnożnik gemów", "Dostęp do laboratorium"],
+                correct: 0
+            },
+            {
+                question: "Gdzie znajdziesz listę najbogatszych graczy?",
+                options: ["!bal", "!baltop", "!pay"],
+                correct: 1
+            },
+            {
+                question: "Co zawiera Skrzynka Zadymiarska dla graczy z sezonu 1?",
+                options: ["Tylko nowych zadymiarzy", "Stare zadymiarze", "Koparki gemów"],
+                correct: 0
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const q = questions[currentQuestion];
+            questionEl.textContent = `Pytanie ${currentQuestion + 1}: ${q.question}`;
+            optionsEl.innerHTML = "";
+            q.options.forEach((option, index) => {
+                const div = document.createElement("div");
+                div.className = "quiz-option";
+                div.textContent = `${String.fromCharCode(65 + index)}. ${option}`;
+                div.onclick = () => checkAnswer(index);
+                optionsEl.appendChild(div);
+            });
+            feedbackEl.textContent = "";
+            nextQuestionBtn.style.display = "none";
+            gsap.from(".quiz-option", { opacity: 0, y: 20, duration: 0.5, stagger: 0.1 });
+        }
+
+        function checkAnswer(selected) {
+            const q = questions[currentQuestion];
+            const options = optionsEl.children;
+            if (selected === q.correct) {
+                feedbackEl.textContent = "Poprawna odpowiedź!";
+                feedbackEl.style.color = "#00ff00";
+                score++;
+                options[selected].classList.add("correct");
+            } else {
+                feedbackEl.textContent = `Błąd! Poprawna odpowiedź: ${q.options[q.correct]}`;
+                feedbackEl.style.color = "#ff0000";
+                options[selected].classList.add("incorrect");
+                options[q.correct].classList.add("correct");
+            }
+            for (let option of options) {
+                option.onclick = null;
+            }
+            nextQuestionBtn.style.display = "block";
+            gsap.from("#feedback", { opacity: 0, duration: 0.5 });
+        }
+
+        function showResults() {
+            quizModal.style.display = "none";
+            alert(`Twój wynik: ${score}/20! ${score >= 16 ? "Świetna robota!" : score >= 10 ? "Nieźle, ale jeszcze poćwicz!" : "Czas wrócić do poradnika!"}`);
+            currentQuestion = 0;
+            score = 0;
+        }
+
+        startQuizBtn.onclick = () => {
+            quizModal.style.display = "flex";
+            loadQuestion();
+            gsap.from(".quiz-container", { scale: 0.8, opacity: 0, duration: 0.8, ease: "back.out(1.7)" });
+        };
+
+        nextQuestionBtn.onclick = () => {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        };
+
+        quizModal.onclick = (e) => {
+            if (e.target === quizModal) {
+                quizModal.style.display = "none";
+                currentQuestion = 0;
+                score = 0;
+            }
+        };
     </script>
 </body>
 </html>
