@@ -7,13 +7,15 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary-gradient: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            --glow-color: rgba(255, 255, 255, 0.3);
+            --primary-gradient: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            --secondary-gradient: linear-gradient(90deg, #ffdd00, #ff9500);
+            --glow-color: rgba(255, 255, 255, 0.4);
+            --glass-bg: rgba(30, 30, 30, 0.3);
         }
 
         body {
             font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0a0a0a;
+            background: #000;
             color: #fff;
             overflow-x: hidden;
             margin: 0;
@@ -22,18 +24,15 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Parallax Background */
-        body::before {
-            content: '';
+        /* Particle Background */
+        .particles {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-            opacity: 0.1;
+            pointer-events: none;
             z-index: -1;
-            transform: translateZ(-1px) scale(1.1);
         }
 
         .section {
@@ -42,11 +41,11 @@
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transform: translateY(100px) scale(0.9);
-            transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+            transform: translateY(120px) scale(0.92);
+            transition: all 1.8s cubic-bezier(0.19, 1, 0.22, 1);
             will-change: transform, opacity;
             position: relative;
-            padding: 4rem 1rem;
+            padding: 5rem 1rem;
         }
 
         .section.visible {
@@ -55,140 +54,162 @@
         }
 
         .hero {
-            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(0, 0, 0, 0.95));
+            background: linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(0, 0, 0, 0.95));
             text-align: center;
-            padding: 6rem 1rem;
+            padding: 7rem 1rem;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 60px rgba(0, 0, 0, 0.9);
+            border: 2px solid transparent;
+            border-image: var(--primary-gradient) 1;
+            animation: borderGlow 4s ease-in-out infinite;
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
-            animation: pulse 10s ease-in-out infinite;
+            top: -60%;
+            left: -60%;
+            width: 220%;
+            height: 220%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, transparent 70%);
+            animation: pulse 12s ease-in-out infinite;
             z-index: 0;
         }
 
         .content {
-            max-width: 90%;
+            max-width: 92%;
             margin: 0 auto;
-            padding: 3rem 1.5rem;
+            padding: 3.5rem 2rem;
             position: relative;
             z-index: 1;
-            backdrop-filter: blur(10px);
-            background: rgba(20, 20, 20, 0.4);
-            border-radius: 20px;
+            backdrop-filter: blur(12px);
+            background: var(--glass-bg);
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .title {
-            font-size: 5rem;
+            font-size: 5.5rem;
             font-weight: 900;
-            letter-spacing: -0.06em;
+            letter-spacing: -0.07em;
             background: var(--primary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 6px 30px var(--glow-color);
-            margin-bottom: 1.5rem;
+            text-shadow: 0 8px 40px var(--glow-color);
+            margin-bottom: 1.8rem;
             position: relative;
-            animation: titleGlow 2s ease-in-out infinite alternate;
+            animation: titleGlow 2.5s ease-in-out infinite alternate;
             font-family: 'SF Pro Display', sans-serif;
+            transform: perspective(1000px) rotateX(5deg);
         }
 
         .title::after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: -18px;
             left: 50%;
             transform: translateX(-50%);
-            width: 120px;
-            height: 4px;
+            width: 140px;
+            height: 5px;
             background: var(--primary-gradient);
-            border-radius: 2px;
-            animation: glowLine 3s ease-in-out infinite;
+            border-radius: 3px;
+            animation: glowLine 3.5s ease-in-out infinite;
         }
 
         .subtitle {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 800;
             background: linear-gradient(45deg, #fff, #d1d1d1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 2rem;
-            text-shadow: 0 4px 20px var(--glow-color);
+            margin-bottom: 2.5rem;
+            text-shadow: 0 6px 30px var(--glow-color);
+            animation: glowPulse 3s ease-in-out infinite;
             font-family: 'SF Pro Display', sans-serif;
         }
 
         .text {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             color: #e0e0e0;
-            line-height: 1.5;
-            margin-bottom: 2rem;
-            animation: fadeInText 1.5s ease-out;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            animation: fadeInText 1.8s ease-out;
             font-family: 'SF Pro Text', sans-serif;
         }
 
         .highlight {
-            background: linear-gradient(45deg, #ffdd00, #ff9500);
+            background: var(--secondary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: shine 2s ease-in-out infinite;
+            animation: shine 2.5s ease-in-out infinite;
         }
+
+        .list-item {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: staggeredFade 0.8s ease-out forwards;
+        }
+
+        .list-item:nth-child(1) { animation-delay: 0.2s; }
+        .list-item:nth-child(2) { animation-delay: 0.4s; }
+        .list-item:nth-child(3) { animation-delay: 0.6s; }
 
         .reward-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            padding: 2rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            padding: 2.5rem 0;
         }
 
         .reward-item {
             background: linear-gradient(145deg, #2a2a2a, #111);
-            padding: 1.5rem;
-            border-radius: 20px;
+            padding: 1.8rem;
+            border-radius: 24px;
             text-align: center;
             font-weight: 700;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);
             position: relative;
             overflow: hidden;
             font-family: 'SF Pro Text', sans-serif;
+            animation: float 6s ease-in-out infinite;
         }
 
         .reward-item::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            top: -60%;
+            left: -60%;
+            width: 220%;
+            height: 220%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.35) 0%, transparent 70%);
             opacity: 0;
-            transition: opacity 0.6s ease;
+            transition: opacity 0.7s ease;
         }
 
-        .reward-item:hover::before {
+        .reward-item:hover::before,
+        .reward-item:active::before {
             opacity: 1;
         }
 
-        .reward-item:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 12px 40px rgba(255, 255, 255, 0.2);
+        .reward-item:hover,
+        .reward-item:active {
+            transform: translateY(-12px) scale(1.08);
+            box-shadow: 0 15px 50px rgba(255, 255, 255, 0.25);
         }
 
         .rule-section {
-            background: linear-gradient(145deg, #222, #111);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-            margin-bottom: 2rem;
+            background: var(--glass-bg);
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            margin-bottom: 2.5rem;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .rule-section::before {
@@ -198,30 +219,41 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(255, 255, 255, 0.08), transparent);
-            opacity: 0.6;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), transparent);
+            opacity: 0.7;
             z-index: -1;
         }
 
         .rule-title {
-            font-size: 2rem;
+            font-size: 2.3rem;
             font-weight: 800;
             background: var(--primary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 4px 20px var(--glow-color);
+            margin-bottom: 2rem;
+            text-shadow: 0 6px 30px var(--glow-color);
+            animation: glowPulse 3.5s ease-in-out infinite;
             font-family: 'SF Pro Display', sans-serif;
         }
 
+        .rule-item {
+            opacity: 0;
+            transform: translateY(15px);
+            animation: staggeredFade 0.6s ease-out forwards;
+        }
+
+        .rule-item:nth-child(1) { animation-delay: 0.1s; }
+        .rule-item:nth-child(2) { animation-delay: 0.2s; }
+        .rule-item:nth-child(3) { animation-delay: 0.3s; }
+
         .footer {
             text-align: center;
-            padding: 2.5rem;
-            font-size: 1.8rem;
+            padding: 3rem;
+            font-size: 2rem;
             font-weight: 800;
             background: linear-gradient(180deg, #111, #000);
             position: relative;
-            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 -6px 25px rgba(0, 0, 0, 0.6);
             font-family: 'SF Pro Display', sans-serif;
         }
 
@@ -231,17 +263,33 @@
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 250px;
-            height: 3px;
+            width: 280px;
+            height: 4px;
             background: var(--primary-gradient);
-            border-radius: 2px;
+            border-radius: 3px;
+            animation: glowLine 4s ease-in-out infinite;
         }
 
         /* Media Queries for Mobile Optimization */
+        @media (max-width: 1024px) {
+            .title {
+                font-size: 4.5rem;
+            }
+
+            .subtitle {
+                font-size: 2.5rem;
+            }
+
+            .content {
+                max-width: 95%;
+                padding: 2.5rem 1.5rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .title {
-                font-size: 3.5rem;
-                margin-bottom: 1rem;
+                font-size: 3.8rem;
+                margin-bottom: 1.2rem;
             }
 
             .title::after {
@@ -250,29 +298,29 @@
             }
 
             .subtitle {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             .text {
-                font-size: 1.4rem;
+                font-size: 1.5rem;
             }
 
             .hero {
-                padding: 4rem 1rem;
+                padding: 4.5rem 1rem;
             }
 
             .content {
                 padding: 2rem 1rem;
-                max-width: 95%;
+                max-width: 96%;
             }
 
             .reward-list {
                 grid-template-columns: 1fr;
-                gap: 1rem;
+                gap: 1.2rem;
             }
 
             .reward-item {
-                padding: 1.2rem;
+                padding: 1.4rem;
             }
 
             .rule-section {
@@ -280,64 +328,74 @@
             }
 
             .rule-title {
-                font-size: 1.8rem;
+                font-size: 1.9rem;
             }
 
             .footer {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
                 padding: 2rem;
             }
 
             .footer::after {
-                width: 200px;
+                width: 220px;
             }
         }
 
         @media (max-width: 480px) {
             .title {
-                font-size: 2.8rem;
+                font-size: 3rem;
             }
 
             .subtitle {
-                font-size: 1.8rem;
+                font-size: 1.9rem;
             }
 
             .text {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
 
             .hero {
-                padding: 3rem 0.5rem;
+                padding: 3.5rem 0.8rem;
             }
 
             .content {
-                padding: 1.5rem 0.8rem;
+                padding: 1.8rem 0.8rem;
             }
 
             .rule-section {
-                padding: 1.5rem;
+                padding: 1.8rem;
             }
 
             .rule-title {
-                font-size: 1.6rem;
+                font-size: 1.7rem;
+            }
+
+            .reward-item {
+                padding: 1.2rem;
             }
         }
 
         /* Animations */
         @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.2; }
-            50% { transform: scale(1.2); opacity: 0.4; }
-            100% { transform: scale(1); opacity: 0.2; }
+            0% { transform: scale(1); opacity: 0.25; }
+            50% { transform: scale(1.3); opacity: 0.45; }
+            100% { transform: scale(1); opacity: 0.25; }
         }
 
         @keyframes titleGlow {
+            0% { text-shadow: 0 8px 40px var(--glow-color); transform: perspective(1000px) rotateX(5deg); }
+            100% { text-shadow: 0 10px 50px rgba(255, 255, 255, 0.6); transform: perspective(1000px) rotateX(3deg); }
+        }
+
+        @keyframes glowPulse {
             0% { text-shadow: 0 6px 30px var(--glow-color); }
-            100% { text-shadow: 0 8px 40px rgba(255, 255, 255, 0.5); }
+            50% { text-shadow: 0 8px 40px rgba(255, 255, 255, 0.5); }
+            100% { text-shadow: 0 6px 30px var(--glow-color); }
         }
 
         @keyframes glowLine {
             0% { opacity: 0.7; transform: translateX(-50%) scale(1); }
-            50% { opacity: 1; transform: translateX(-50%) scale(1.3); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.4); }
             100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
         }
 
@@ -348,12 +406,31 @@
         }
 
         @keyframes fadeInText {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes staggeredFade {
             0% { opacity: 0; transform: translateY(20px); }
             100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes borderGlow {
+            0% { border-image: var(--primary-gradient) 1; }
+            50% { border-image: linear-gradient(45deg, #ff9500, #4ecdc4, #ff6b6b) 1; }
+            100% { border-image: var(--primary-gradient) 1; }
         }
     </style>
 </head>
 <body>
+    <canvas class="particles" id="particles"></canvas>
+
     <section class="hero section">
         <div class="content">
             <h1 class="title">PORADNIK</h1>
@@ -366,9 +443,9 @@
             <h2 class="title">Klucz do dominacji na serwerze</h2>
             <p class="text">Oto wszystko, co musisz wiedzieć, by stać się prawilnym obywatelem Ulicy Piotrkowskiej!</p>
             <ul class="list-disc list-inside text-lg space-y-4">
-                <li>Levele są liczone w autorskim bocie!</li>
-                <li>Sprawdzaj swój poziom komendą <code>,rank</code>, a ranking przejrzysz przez <code>,lb</code>. Wypróbuj <code>,lb 7</code> i odkryj funkcję której nie ma nigdzie indziej!</li>
-                <li>Role za levele odblokowują kategorię <span class="font-bold">PREMIUM</span> całkowicie za darmo! Czekają na ciebie ekskluzywne konkursy i personalizowane kolory nicków.</li>
+                <li class="list-item">Levele są liczone w autorskim bocie!</li>
+                <li class="list-item">Sprawdzaj swój poziom komendą <code>,rank</code>, a ranking przejrzysz przez <code>,lb</code>. Wypróbuj <code>,lb 7</code> i odkryj funkcję której nie ma nigdzie indziej!</li>
+                <li class="list-item">Role za levele odblokowują kategorię <span class="font-bold">PREMIUM</span> całkowicie za darmo! Czekają na ciebie ekskluzywne konkursy i personalizowane kolory nicków.</li>
             </ul>
         </div>
     </section>
@@ -404,44 +481,44 @@
             <div class="rule-section">
                 <h3 class="rule-title">Ogólne zasady gry</h3>
                 <ul class="list-disc list-inside space-y-2">
-                    <li>Szanuj innych – zero obraźliwych słów czy toksycznych zachowań.</li>
-                    <li>Bądź uprzejmy i kulturalny – to podstawa naszej społeczności.</li>
-                    <li>Zero tolerancji dla dyskryminacji – szanujemy każdego.</li>
+                    <li class="rule-item">Szanuj innych – zero obraźliwych słów czy toksycznych zachowań.</li>
+                    <li class="rule-item">Bądź uprzejmy i kulturalny – to podstawa naszej społeczności.</li>
+                    <li class="rule-item">Zero tolerancji dla dyskryminacji – szanujemy każdego.</li>
                 </ul>
             </div>
             <div class="rule-section">
                 <h3 class="rule-title">Kanały tekstowe – be sigma</h3>
                 <ul class="list-disc list-inside space-y-2">
-                    <li>Spam i flood są zabronione.</li>
-                    <li>Nie wysyłaj podejrzanych linków ani nie promuj się.</li>
-                    <li>Treści nieodpowiednie, jak 18+ czy obraźliwe, są niedozwolone.</li>
+                    <li class="rule-item">Spam i flood są zabronione.</li>
+                    <li class="rule-item">Nie wysyłaj podejrzanych linków ani nie promuj się.</li>
+                    <li class="rule-item">Treści nieodpowiednie, jak 18+ czy obraźliwe, są niedozwolone.</li>
                 </ul>
             </div>
             <div class="rule-section">
                 <h3 class="rule-title">Kanały głosowe – mutacja nie jest wymagana!</h3>
                 <ul class="list-disc list-inside space-y-2">
-                    <li>Unikaj obraźliwych dźwięków lub mowy.</li>
-                    <li>Nie nadużywaj efektów dźwiękowych – szanuj innych.</li>
+                    <li class="rule-item">Unikaj obraźliwych dźwięków lub mowy.</li>
+                    <li class="rule-item">Nie nadużywaj efektów dźwiękowych – szanuj innych.</li>
                 </ul>
             </div>
             <div class="rule-section">
                 <h3 class="rule-title">Moderacja – strażnicy Ulicy</h3>
                 <ul class="list-disc list-inside space-y-2">
-                    <li>Słuchaj moderatorów – ich wskazówki są kluczowe.</li>
-                    <li>Nie ignoruj ostrzeżeń – to dla dobra społeczności.</li>
-                    <li>Szanuj decyzje modów, ale możesz się odwołać.</li>
+                    <li class="rule-item">Słuchaj moderatorów – ich wskazówki są kluczowe.</li>
+                    <li class="rule-item">Nie ignoruj ostrzeżeń – to dla dobra społeczności.</li>
+                    <li class="rule-item">Szanuj decyzje modów, ale możesz się odwołać.</li>
                 </ul>
             </div>
             <div class="rule-section">
                 <h3 class="rule-title">Kary – nie testuj zasad</h3>
                 <ul class="list-disc list-inside space-y-2">
-                    <li>Łamanie zasad może skutkować banem z opcją odwołania.</li>
-                    <li>Treści 18+ lub niezgodne z ToS Discorda = permanentny ban.</li>
-                    <li>Niestosowny awatar/profil? 14 dni na zmianę, inaczej ban.</li>
-                    <li>Odwołania kieruj do adminów lub otwórz ticket.</li>
-                    <li>Provokacje = kick. Nękanie = ban. Skrypty na ekonomię = blacklist.</li>
-                    <li>Sprzedaż kont, boosty, promowanie innych serwerów = ban.</li>
-                    <li>Leak danych, nękanie, łamanie ToS = ban i potencjalna blokada konta.</li>
+                    <li class="rule-item">Łamanie zasad może skutkować banem z opcją odwołania.</li>
+                    <li class="rule-item">Treści 18+ lub niezgodne z ToS Discorda = permanentny ban.</li>
+                    <li class="rule-item">Niestosowny awatar/profil? 14 dni na zmianę, inaczej ban.</li>
+                    <li class="rule-item">Odwołania kieruj do adminów lub otwórz ticket.</li>
+                    <li class="rule-item">Provokacje = kick. Nękanie = ban. Skrypty na ekonomię = blacklist.</li>
+                    <li class="rule-item">Sprzedaż kont, boosty, promowanie innych serwerów = ban.</li>
+                    <li class="rule-item">Leak danych, nękanie, łamanie ToS = ban i potencjalna blokada konta.</li>
                 </ul>
             </div>
         </div>
@@ -452,8 +529,65 @@
     </div>
 
     <script>
-        const sections = document.querySelectorAll('.section');
+        // Particle Effect
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
+        const particlesArray = [];
+        const numberOfParticles = 100;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particlesArray.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Intersection Observer for Sections
+        const sections = document.querySelectorAll('.section');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -469,7 +603,7 @@
             observer.observe(section);
         });
 
-        // Smooth scroll effect
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
