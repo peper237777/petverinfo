@@ -1,1 +1,165 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poradnik Serwera - Sezon 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+            text-align: center;
+            padding: 4rem;
+        }
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .reward-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .reward-item {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .rule-section {
+            background: #111;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero section">
+        <div class="content">
+            <h1 class="text-5xl font-bold mb-4">NOWOŚĆ!</h1>
+            <p class="text-2xl mb-6">Sezon 2 poziomów na naszym serwerze wystartował 17 listopada 2024 roku!</p>
+            <p class="text-lg">System poziomów został uproszczony względem poprzedniego systemu. Przekonaj się, jak łatwo zdobywać nagrody!</p>
+        </div>
+    </section>
 
+    <section class="section">
+        <div class="content">
+            <h2 class="text-4xl font-bold mb-6">Najważniejsze informacje na start</h2>
+            <ul class="list-disc list-inside text-lg space-y-4">
+                <li>Powstał nowy, autorski bot, w którym dzieje się cała magia!</li>
+                <li>Używaj komend <code>,rank</code> aby sprawdzić swój poziom i <code>,lb</code> aby zobaczyć ranking (<code>,lb 7</code> odkryje niespodzianki!).</li>
+                <li>Role za levele odblokowują dostęp do kategorii <span class="font-bold">PREMIUM</span> za darmo!</li>
+                <li>W kategorii PREMIUM znajdziesz m.in. specjalne konkursy i możliwość wyboru koloru nicku z panelu.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="content">
+            <h2 class="text-4xl font-bold mb-6">Rozpiska nagród za poziomy</h2>
+            <div class="reward-list">
+                <div class="reward-item">RZADKI</div>
+                <div class="reward-item">SUPERRZADKI</div>
+                <div class="reward-item">EPICKI</div>
+                <div class="reward-item">MITYCZNY</div>
+                <div class="reward-item">CHROMATYCZNY</div>
+                <div class="reward-item">LEGENDARNY</div>
+                <div class="reward-item">ŚWIATOWA SŁAWA</div>
+                <div class="reward-item">KSIĘŻYCOWA SŁAWA</div>
+                <div class="reward-item">MARSJAŃSKA SŁAWA</div>
+                <div class="reward-item">SATURNOWA SŁAWA</div>
+                <div class="reward-item">SŁONECZNA SŁAWA</div>
+                <div class="reward-item">SŁONECZNA SŁAWA II</div>
+                <div class="reward-item">SŁONECZNA SŁAWA III</div>
+                <div class="reward-item">METEORYTOWA SŁAWA</div>
+                <div class="reward-item">KOSMICZNA SŁAWA</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="content">
+            <h2 class="text-4xl font-bold mb-6">Regulamin</h2>
+            <div class="rule-section">
+                <h3 class="text-2xl font-semibold mb-4">Ogólne zasady</h3>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Szanuj innych użytkowników: unikaj obraźliwych lub wulgarnych słów.</li>
+                    <li>Zachowuj się uprzejmie i kulturalnie.</li>
+                    <li>Zero tolerancji dla dyskryminacji i prześladowania.</li>
+                </ul>
+            </div>
+            <div class="rule-section mt-4">
+                <h3 class="text-2xl font-semibold mb-4">Kanały tekstowe</h3>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Nie spamuj i nie flooduj.</li>
+                    <li>Nie wysyłaj podejrzanych linków ani się nie promuj.</li>
+                    <li>Zakaz publikacji treści nieodpowiednich.</li>
+                </ul>
+            </div>
+            <div class="rule-section mt-4">
+                <h3 class="text-2xl font-semibold mb-4">Kanały głosowe</h3>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Unikaj obraźliwych dźwięków lub mowy.</li>
+                    <li>Nie nadużywaj funkcji dźwiękowych.</li>
+                </ul>
+            </div>
+            <div class="rule-section mt-4">
+                <h3 class="text-2xl font-semibold mb-4">Uwagi dotyczące moderatorów</h3>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Słuchaj wskazówek moderatorów.</li>
+                    <li>Nie ignoruj ostrzeżeń.</li>
+                    <li>Szanuj decyzje moderatorów.</li>
+                </ul>
+            </div>
+            <div class="rule-section mt-4">
+                <h3 class="text-2xl font-semibold mb-4">Kary i ostrzeżenia</h3>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Niezgodne zachowanie może skutkować banem (z możliwością odwołania).</li>
+                    <li>Treści 18+ lub niezgodne z ToS Discorda = permanentny ban.</li>
+                    <li>Niestosowny awatar/profil/biografia: 14 dni na zmianę, inaczej ban.</li>
+                    <li>Odwoł  <a href="https://en.wikipedia.org/wiki/Level_(video_games)#Player_levels_and_ranking"> level system</a> na serwerze.</li>
+                    <li>Zakaz nękania, leakowania danych, sprzedaży kont, boostów, promowania innych serwerów.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const sections = document.querySelectorAll('.section');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
