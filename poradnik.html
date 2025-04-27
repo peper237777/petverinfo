@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poradnik Serwera - Sezon 2</title>
+    <title>Ulica Piotrkowska</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
@@ -11,6 +11,7 @@
             background-color: #000;
             color: #fff;
             overflow-x: hidden;
+            margin: 0;
         }
         .section {
             min-height: 100vh;
@@ -18,65 +19,127 @@
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease-out;
+            transform: translateY(100px) scale(0.95);
+            transition: all 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+            will-change: transform, opacity;
         }
         .section.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
         .hero {
             background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
             text-align: center;
-            padding: 4rem;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.8) 100%);
+            z-index: 0;
         }
         .content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 3rem 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        .title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            background: linear-gradient(45deg, #fff, #a0a0a0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 20px rgba(255,255,255,0.2);
+            margin-bottom: 1rem;
+        }
+        .subtitle {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #d1d1d1;
+            margin-bottom: 2rem;
+        }
+        .text {
+            font-size: 1.8rem;
+            color: #d1d1d1;
+            line-height: 1.4;
+            margin-bottom: 2rem;
         }
         .reward-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
         }
         .reward-item {
-            background: #1a1a1a;
-            padding: 1rem;
-            border-radius: 10px;
+            background: linear-gradient(145deg, #222, #111);
+            padding: 1.5rem;
+            border-radius: 15px;
             text-align: center;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .reward-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.1);
         }
         .rule-section {
-            background: #111;
+            background: linear-gradient(145deg, #1a1a1a, #111);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            margin-bottom: 2rem;
+        }
+        .rule-title {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #fff, #a0a0a0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+        .footer {
+            text-align: center;
             padding: 2rem;
-            border-radius: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: #111;
         }
     </style>
 </head>
 <body>
     <section class="hero section">
         <div class="content">
-            <h1 class="text-5xl font-bold mb-4">NOWOŚĆ!</h1>
-            <p class="text-2xl mb-6">Sezon 2 poziomów na naszym serwerze wystartował 17 listopada 2024 roku!</p>
-            <p class="text-lg">System poziomów został uproszczony względem poprzedniego systemu. Przekonaj się, jak łatwo zdobywać nagrody!</p>
+            <h1 class="title">PORADNIK</h1>
+            <h2 class="subtitle">Ulica Piotrkowska</h2>
+            <p class="text">Witaj na Ulicy Piotrkowskiej – epicentrum niesamowitej zabawy! Sezon 2 poziomów wystartował 17 listopada 2024 z nowym, uproszczonym systemem, który zmieni twoje podejście do gry!</p>
         </div>
     </section>
 
     <section class="section">
         <div class="content">
-            <h2 class="text-4xl font-bold mb-6">Najważniejsze informacje na start</h2>
+            <h2 class="title">Klucz do dominacji na serwerze</h2>
+            <p class="text">Oto wszystko, co musisz wiedzieć, by stać się legendą Ulicy Piotrkowskiej!</p>
             <ul class="list-disc list-inside text-lg space-y-4">
-                <li>Powstał nowy, autorski bot, w którym dzieje się cała magia!</li>
-                <li>Używaj komend <code>,rank</code> aby sprawdzić swój poziom i <code>,lb</code> aby zobaczyć ranking (<code>,lb 7</code> odkryje niespodzianki!).</li>
-                <li>Role za levele odblokowują dostęp do kategorii <span class="font-bold">PREMIUM</span> za darmo!</li>
-                <li>W kategorii PREMIUM znajdziesz m.in. specjalne konkursy i możliwość wyboru koloru nicku z panelu.</li>
+                <li>Nasz autorski bot to serce rozgrywki – prawdziwy game-changer!</li>
+                <li>Sprawdzaj swój poziom komendą <code>,rank</code>, a ranking przejrzysz przez <code>,lb</code>. Wypróbuj <code>,lb 7</code> i odkryj niespodziankę!</li>
+                <li>Role za levele odblokowują kategorię <span class="font-bold">PREMIUM</span> całkowicie za darmo! Czekają na ciebie ekskluzywne konkursy i personalizowane kolory nicków.</li>
             </ul>
         </div>
     </section>
 
     <section class="section">
         <div class="content">
-            <h2 class="text-4xl font-bold mb-6">Rozpiska nagród za poziomy</h2>
+            <h2 class="title">Nagrody, które rozświetlą twój profil</h2>
+            <p class="text">Od Rzadkich po Kosmiczną Sławę – te nagrody sprawią, że będziesz błyszczeć!</p>
             <div class="reward-list">
                 <div class="reward-item">RZADKI</div>
                 <div class="reward-item">SUPERRZADKI</div>
@@ -99,50 +162,57 @@
 
     <section class="section">
         <div class="content">
-            <h2 class="text-4xl font-bold mb-6">Regulamin</h2>
+            <h2 class="title">Regulamin – zasady godne mistrzów</h2>
+            <p class="text">Przestrzegaj tych zasad, a Ulica Piotrkowska stanie się twoim drugim domem!</p>
             <div class="rule-section">
-                <h3 class="text-2xl font-semibold mb-4">Ogólne zasady</h3>
+                <h3 class="rule-title">Ogólne zasady gry</h3>
                 <ul class="list-disc list-inside space-y-2">
-                    <li>Szanuj innych użytkowników: unikaj obraźliwych lub wulgarnych słów.</li>
-                    <li>Zachowuj się uprzejmie i kulturalnie.</li>
-                    <li>Zero tolerancji dla dyskryminacji i prześladowania.</li>
+                    <li>Szanuj innych – zero obraźliwych słów czy toksycznych zachowań.</li>
+                    <li>Bądź uprzejmy i kulturalny – to podstawa naszej społeczności.</li>
+                    <li>Zero tolerancji dla dyskryminacji – szanujemy każdego.</li>
                 </ul>
             </div>
-            <div class="rule-section mt-4">
-                <h3 class="text-2xl font-semibold mb-4">Kanały tekstowe</h3>
+            <div class="rule-section">
+                <h3 class="rule-title">Kanały tekstowe – pisz z klasą</h3>
                 <ul class="list-disc list-inside space-y-2">
-                    <li>Nie spamuj i nie flooduj.</li>
-                    <li>Nie wysyłaj podejrzanych linków ani się nie promuj.</li>
-                    <li>Zakaz publikacji treści nieodpowiednich.</li>
+                    <li>Spam i flood są zabronione.</li>
+                    <li>Nie wysyłaj podejrzanych linków ani nie promuj się.</li>
+                    <li>Treści nieodpowiednie, jak 18+ czy obraźliwe, są niedozwolone.</li>
                 </ul>
             </div>
-            <div class="rule-section mt-4">
-                <h3 class="text-2xl font-semibold mb-4">Kanały głosowe</h3>
+            <div class="rule-section">
+                <h3 class="rule-title">Kanały głosowe – brzmi dobrze?</h3>
                 <ul class="list-disc list-inside space-y-2">
                     <li>Unikaj obraźliwych dźwięków lub mowy.</li>
-                    <li>Nie nadużywaj funkcji dźwiękowych.</li>
+                    <li>Nie nadużywaj efektów dźwiękowych – szanuj innych.</li>
                 </ul>
             </div>
-            <div class="rule-section mt-4">
-                <h3 class="text-2xl font-semibold mb-4">Uwagi dotyczące moderatorów</h3>
+            <div class="rule-section">
+                <h3 class="rule-title">Moderacja – strażnicy Ulicy</h3>
                 <ul class="list-disc list-inside space-y-2">
-                    <li>Słuchaj wskazówek moderatorów.</li>
-                    <li>Nie ignoruj ostrzeżeń.</li>
-                    <li>Szanuj decyzje moderatorów.</li>
+                    <li>Słuchaj moderatorów – ich wskazówki są kluczowe.</li>
+                    <li>Nie ignoruj ostrzeżeń – to dla dobra społeczności.</li>
+                    <li>Szanuj decyzje modów, ale możesz się odwołać.</li>
                 </ul>
             </div>
-            <div class="rule-section mt-4">
-                <h3 class="text-2xl font-semibold mb-4">Kary i ostrzeżenia</h3>
+            <div class="rule-section">
+                <h3 class="rule-title">Kary – nie testuj zasad</h3>
                 <ul class="list-disc list-inside space-y-2">
-                    <li>Niezgodne zachowanie może skutkować banem (z możliwością odwołania).</li>
+                    <li>Łamanie zasad może skutkować banem z opcją odwołania.</li>
                     <li>Treści 18+ lub niezgodne z ToS Discorda = permanentny ban.</li>
-                    <li>Niestosowny awatar/profil/biografia: 14 dni na zmianę, inaczej ban.</li>
-                    <li>Odwoł  <a href="https://en.wikipedia.org/wiki/Level_(video_games)#Player_levels_and_ranking"> level system</a> na serwerze.</li>
-                    <li>Zakaz nękania, leakowania danych, sprzedaży kont, boostów, promowania innych serwerów.</li>
+                    <li>Niestosowny awatar/profil? 14 dni na zmianę, inaczej ban.</li>
+                    <li>Odwołania kieruj do adminów lub otwórz ticket.</li>
+                    <li>Provokacje = kick. Nękanie = ban. Skrypty na ekonomię = blacklist.</li>
+                    <li>Sprzedaż kont, boosty, promowanie innych serwerów = ban.</li>
+                    <li>Leak danych, nękanie, łamanie ToS = ban i potencjalna blokada konta.</li>
                 </ul>
             </div>
         </div>
     </section>
+
+    <div class="footer">
+        Ulica Piotrkowska
+    </div>
 
     <script>
         const sections = document.querySelectorAll('.section');
@@ -154,7 +224,8 @@
                 }
             });
         }, {
-            threshold: 0.1
+            threshold: 0.2,
+            rootMargin: '0px 0px -10% 0px'
         });
 
         sections.forEach(section => {
